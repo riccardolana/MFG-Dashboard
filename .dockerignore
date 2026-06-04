@@ -1,0 +1,17 @@
+**/.venv
+**/__pycache__
+**/*.pyc
+.git
+.claude
+*.pdf
+v2
+v3
+assets
+index.html
+app.js
+data.js
+styles.css
+strategy-planning-map-share.html
+intro.md
+.DS_Store
+**/.DS_Store

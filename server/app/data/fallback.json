@@ -1,0 +1,862 @@
+{
+  "strategy": {
+    "phases": [
+      {
+        "id": "discover",
+        "title": "Discover",
+        "subtitle": "Insight & Strategy",
+        "accent": "#4285f4",
+        "icon": "D",
+        "summary": "Frame the strategic context, align on the brief, and turn workshop inputs into confident direction before development begins.",
+        "signal": "From ambiguity to aligned intent",
+        "subphases": [
+          {
+            "id": "strategic-direction",
+            "title": "Strategic Direction",
+            "summary": "Translate the marketing ask into the strategic approach, shared hypotheses, and the decisions needed before downstream work starts.",
+            "milestone": "Brief intake, contextual exploration, hypothesis refinement, and strategic alignment.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "jtbd-1-1",
+                  "number": "1.1",
+                  "title": "Marketing Brief Intake",
+                  "summary": "Receive, interpret, and align on the marketing brief from Google Media Lab so expectations are calibrated before work begins.",
+                  "status": "Sample complete",
+                  "owner": "Strategy, Planning, Analytics",
+                  "effort": "High leverage",
+                  "sections": {
+                    "coreActivities": [
+                      "Receive marketing brief from Media Lab",
+                      "Review for completeness across KPIs, audience, budget, and timelines",
+                      "Identify gaps and formulate clarifying questions",
+                      "Align internally on interpretation across Strategy, Planning, and Analytics",
+                      "Challenge or negotiate brief assumptions where appropriate"
+                    ],
+                    "inputs": [
+                      "Marketing brief from Google Media Lab",
+                      "OBP outputs including budget and channel recommendations",
+                      "Product Area context, priorities, and tier classification",
+                      "Historical campaign context"
+                    ],
+                    "outputs": [
+                      "Confirmed brief with aligned expectations",
+                      "Identified gaps flagged for resolution",
+                      "Internal alignment on scope and ambition"
+                    ],
+                    "enablers": {
+                      "now": {
+                        "tools": [
+                          "Email",
+                          "Google Docs",
+                          "Meetings"
+                        ],
+                        "agents": [
+                          "None"
+                        ]
+                      },
+                      "near": {
+                        "tools": [
+                          "N/A"
+                        ],
+                        "agents": [
+                          "Marketing Brief Agent that collects brief-related conversations across channels into one source of truth"
+                        ]
+                      },
+                      "next": {
+                        "tools": [
+                          "N/A"
+                        ],
+                        "agents": [
+                          "N/A"
+                        ]
+                      }
+                    },
+                    "valueDriver": {
+                      "theme": "Effectiveness",
+                      "quality": "Quality",
+                      "statement": "Quality of brief interpretation determines whether downstream work solves the right problem."
+                    },
+                    "coreProblem": "Google does not always provide a sufficient brief; briefs sometimes arrive with tactical-level decisions already made before strategy work begins. Time spent renegotiating or working from incomplete information diverts capacity from strategic thinking."
+                  }
+                },
+                {
+                  "id": "jtbd-1-2",
+                  "number": "1.2",
+                  "title": "Contextual Research & Exploration",
+                  "summary": "Build a shared evidence base across category, audience, competitors, and campaign context.",
+                  "status": "Placeholder"
+                },
+                {
+                  "id": "jtbd-1-3",
+                  "number": "1.3",
+                  "title": "Define & Refine Hypotheses",
+                  "summary": "Convert early signals into strategic hypotheses that can be challenged and sharpened.",
+                  "status": "Placeholder"
+                },
+                {
+                  "id": "jtbd-1-4",
+                  "number": "1.4",
+                  "title": "Align with Client on Strategic Direction",
+                  "summary": "Create explicit alignment on the strategic route before planning and production continue.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": {
+                "mfgFocus": [
+                  {
+                    "title": "Connected Research Infrastructure",
+                    "description": "Strategists currently pull from 10+ disconnected sources per sprint (BAV, Choreograph, social listening, Forrester, channel-level insights, eMarketer, Comscore, 3rd-party audience tools, past campaign data), assembling individual meta-databases in spreadsheets each time. Audience profiles must be rebuilt per platform with no persistence across sprints. Opportunity identified to create a persistent 5C intelligence layer that eliminates per-sprint manual assembly, enables cross-source triangulation by default, and carries audience definitions forward — recovering capacity currently absorbed by data mechanics rather than strategic thinking."
+                  },
+                  {
+                    "title": "Institutional Strategy Memory",
+                    "description": "Each strategy sprint starts without structured access to what was decided in previous sprints, what hypotheses were tested, or what strategic territories were explored and discarded. Synthesis is manual and context is lost between engagements. Opportunity identified to build a persistent knowledge layer (via G-Drive integration and orchestrator agents) that surfaces relevant historical decisions, past sprint outputs, and category precedents at the point of need — so each sprint builds on prior thinking rather than rebuilding from scratch."
+                  },
+                  {
+                    "title": "Automated Strategy-to-Production Handoff",
+                    "description": "The creative wishlist is currently a Google Sheet that must be manually populated and then manually transferred into the asset tracker downstream. Changes to the wishlist during the strategy phase don't automatically cascade. Opportunity identified to connect the creative wishlist output directly to downstream asset tracking (via Creative Analytics Library integration), so that channel/format/rotation requirements flow automatically into production briefing without re-entry."
+                  },
+                  {
+                    "title": "Growth Opportunity Surfacing",
+                    "description": "The current process relies on manual synthesis to identify where growth potential lies, without systematic access to historical category launch data or competitive base layers. Opportunity identified to introduce an agent capability that proactively highlights growth white space by cross-referencing contextual research findings with historical campaign performance and category benchmarks — providing strategists a base layer to work from rather than starting from a blank canvas."
+                  }
+                ],
+                "shared": [
+                  {
+                    "title": "Brief Calibration & Completeness",
+                    "description": "Briefs sometimes arrive with tactical-level decisions pre-baked (e.g., channel selections, format choices) before strategy work begins, or with gaps in KPIs, audience definition, or budget parameters. Time spent re-negotiating scope or working from incomplete information diverts strategic capacity on both sides. Opportunity identified to co-develop a shared brief completeness framework that separates strategic intent from tactical prescription — ensuring MFG receives the \"why\" clearly, while Google retains flexibility on the \"how\" until strategy work validates direction."
+                  },
+                  {
+                    "title": "First-Party Data Access in Strategy Sprints",
+                    "description": "The strategy sprint is where MFG's strategic value is most visible, and Google's 1st-party data (business context, product usage, audience behaviour) is a critical input for grounding hypotheses in reality. Currently, this data arrives variably — sometimes rich, sometimes limited. Opportunity identified to establish a structured data-sharing protocol ahead of each sprint, defining what 1PD Google will bring (and in what format) so that hypothesis development is grounded in shared intelligence from the outset rather than supplemented retroactively."
+                  },
+                  {
+                    "title": "Campaign Understanding Prior to Brief",
+                    "description": "MFG's ability to prepare meaningful research and sharpen hypotheses before the sprint depends on early signals about campaign intent, product priorities, and market focus. Opportunity identified to create a pre-brief signalling mechanism (potentially via the Living Brief Agent concept) where emerging campaign context — even informal or evolving — is captured progressively, giving MFG a head start on contextual research and reducing the compressed timeline between brief receipt and workshop delivery."
+                  }
+                ]
+              },
+              "enabledBy": [
+                "Brief completeness checklist",
+                "Cross-functional intake ritual",
+                "Strategy-to-planning handoff notes"
+              ],
+              "enablers": [
+                "Marketing Brief Agent",
+                "Brief quality score",
+                "Centralized decision log"
+              ],
+              "valueCreation": [
+                "Higher quality strategic decisions",
+                "Fewer planning reversals",
+                "Improved confidence in downstream work"
+              ]
+            }
+          },
+          {
+            "id": "long-range-planning",
+            "title": "Annual Long Range Planning",
+            "summary": "Define the annual strategic operating frame across Product Areas, audiences, channels, and measurement expectations.",
+            "milestone": "Audience delivery analysis, competitive analysis, product insights, brand creative direction, and learnings.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "jtbd-1-5",
+                  "number": "1.5",
+                  "title": "Long-Range Planning",
+                  "summary": "Build the annual view that connects audience, channel, market, and portfolio decisions.",
+                  "status": "Placeholder"
+                },
+                {
+                  "id": "jtbd-1-5a",
+                  "number": "1.5a",
+                  "title": "Audience Delivery Analysis",
+                  "summary": "Understand the scale and quality of audience reach against annual objectives.",
+                  "status": "Placeholder"
+                },
+                {
+                  "id": "jtbd-1-5b",
+                  "number": "1.5b",
+                  "title": "Competitive Analysis",
+                  "summary": "Identify competitive pressure, whitespace, and positioning implications.",
+                  "status": "Placeholder"
+                },
+                {
+                  "id": "jtbd-1-5c",
+                  "number": "1.5c",
+                  "title": "Product Insights",
+                  "summary": "Translate Product Area signals into planning implications.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": {
+                "mfgFocus": [
+                  {
+                    "title": "Live Scenario Planning Capability",
+                    "description": "The team is expected to cover all 7 planning ingredients per PA but currently achieves 1–2 due to time constraints. Opportunity identified to enable real-time scenario building within Campaign Strategies — replacing weeks of manual spreadsheet modelling with the ability to toggle implications and generate channel/flighting outputs live in collaborative sessions."
+                  },
+                  {
+                    "title": "Global Audience Composition Analysis",
+                    "description": "NMI is US-only; non-US markets skip audience delivery analysis entirely, creating blind spots across half a billion dollars of spend. Opportunity identified to extend composition analysis globally via Campaign Strategies' non-targeted reach report — piloting now, targeting global rollout."
+                  },
+                  {
+                    "title": "Scalable Competitive Intelligence",
+                    "description": "Outside the US, competitive data is thin to non-existent — teams rely on calling media partners for anecdotal data. Opportunity identified to consolidate Charm, Meow, and Strategic Insights into a unified competitive agent, with SEMRush and Google Trends expanding coverage beyond US markets."
+                  },
+                  {
+                    "title": "Automated Historical Learnings Synthesis",
+                    "description": "PCA data, testing results, and BLS/CLS outputs are scattered across decks, spreadsheets, and platforms with no automated synthesis. The next campaign starts before the last one's PCA completes — it's difficult for learnings to feed back. Opportunity identified to build a PA-level historical knowledge agent that surfaces what worked and what didn't without requiring someone to locate scattered decks."
+                  },
+                  {
+                    "title": "Cross-PA Knowledge Sharing at Scale",
+                    "description": "With 1,500 people across PAs and markets, relevant learnings exist but transfer is entirely human-dependent. Chrome's app download breakthrough could transform Gemini's approach. Opportunity identified to build a centralised, queryable knowledge base so learnings persist when people change roles and scale without requiring phone calls."
+                  },
+                  {
+                    "title": "Burson Social Listening Integration",
+                    "description": "Burson holds social conversation data; MFG holds media decisions — the two don't connect. Opportunity identified to establish a structured workflow between Burson's listening outputs and MFG's planning process, replacing inconsistent desk research with a reliable social intelligence input across markets."
+                  }
+                ],
+                "shared": [
+                  {
+                    "title": "Dynamic Product Insights Access",
+                    "description": "Google's richest first-party signal (product usage, penetration, funnel data) currently arrives as static slide decks with no way to cross-reference against media delivery or planning assumptions. Opportunity identified to move toward queryable, dynamic access — enabling MFG to overlay product signals with media data rather than treating them as one-off presentations."
+                  },
+                  {
+                    "title": "Creative–Media Alignment to Reduce Late-Stage Rework",
+                    "description": "Creative agencies are often briefed by Google separately without media context; direction changes surface late, causing cascading rework across media plans. Opportunity identified to establish earlier coordination between creative briefing and media planning — ensuring format requirements and brand behaviour implications are shared at the point of plan development, not after."
+                  },
+                  {
+                    "title": "Planning Window for Full Ingredient Coverage",
+                    "description": "Achieving all 7 ingredients requires sufficient time and timely inputs. When upstream approvals, OBP outputs, or product data arrive late, the available window compresses and teams triage to 1–2 ingredients. Opportunity identified to align on a shared planning cadence that protects the window for comprehensive annual planning — so the strategic backbone is built once and held, rather than quarterly re-planning from scratch."
+                  }
+                ]
+              },
+              "enabledBy": [
+                "Annual planning template",
+                "Cross-PA learning repository",
+                "Market and audience benchmark inputs"
+              ],
+              "enablers": [
+                "Audience analysis assistant",
+                "Competitive signal monitor",
+                "Learning retrieval layer"
+              ],
+              "valueCreation": [
+                "Improved annual consistency",
+                "More reusable strategic intelligence",
+                "Earlier identification of delivery constraints"
+              ]
+            }
+          },
+          {
+            "id": "marketing-brief-deck",
+            "title": "Marketing Brief & 13-slide Deck Output",
+            "summary": "Package strategic choices into the marketing brief and the core deck artefact that travels into execution.",
+            "milestone": "Creative wishlist and 13-page slide deck output become the bridge into Create.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "jtbd-1-x1",
+                  "number": "XX",
+                  "title": "Creative Wishlist",
+                  "summary": "Capture the strategic asks that creative development needs to satisfy.",
+                  "status": "Placeholder"
+                },
+                {
+                  "id": "jtbd-1-x2",
+                  "number": "XX",
+                  "title": "13 Page Slide Deck",
+                  "summary": "Translate Discovery outputs into a concise stakeholder-ready strategic narrative.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Make the output reusable by downstream teams.",
+                "Clarify what is a strategic recommendation versus an executional ask."
+              ],
+              "enabledBy": [
+                "Deck narrative framework",
+                "Creative requirement checklist"
+              ],
+              "enablers": [
+                "Deck assembly assistant",
+                "Creative requirement extractor"
+              ],
+              "valueCreation": [
+                "Cleaner handoff into development",
+                "Less reinterpretation in production"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "create",
+        "title": "Create",
+        "subtitle": "Development & Production",
+        "accent": "#ea4335",
+        "icon": "C",
+        "summary": "Turn the strategy into channel plans, creative requirements, production assets, and trafficking-ready campaign components.",
+        "signal": "From direction to designed delivery",
+        "subphases": [
+          {
+            "id": "publisher-forecasting",
+            "title": "Publisher Forecasting & Planning",
+            "summary": "Translate strategy into publisher expectations, reach logic, and planning constraints.",
+            "milestone": "Forecast planning quality and publisher confidence.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-publisher-forecasting",
+                  "number": "TBD",
+                  "title": "Publisher Forecasting JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important publisher forecasting opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          },
+          {
+            "id": "media-plan",
+            "title": "Media Plan (Trix)",
+            "summary": "Build and refine the channel plan that connects strategy, budget, targeting, and timing.",
+            "milestone": "Media plan ready for execution and review.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-media-planning",
+                  "number": "TBD",
+                  "title": "Media Planning JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important media planning opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          },
+          {
+            "id": "asset-tracker",
+            "title": "Asset Tracker & Creative Wishlist",
+            "summary": "Coordinate asset needs, creative asks, and production dependencies across teams.",
+            "milestone": "Creative wishlist and asset tracker remain aligned.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-asset-tracking",
+                  "number": "TBD",
+                  "title": "Asset Tracking JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important asset tracking opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "activate",
+        "title": "Activate",
+        "subtitle": "Execution & Growth",
+        "accent": "#34a853",
+        "icon": "A",
+        "summary": "Move from planned campaign into live execution, launch readiness, and in-flight optimization.",
+        "signal": "From plan to live performance",
+        "subphases": [
+          {
+            "id": "campaign-shell",
+            "title": "Campaign Shell Build & Trafficking",
+            "summary": "Prepare campaign structures, trafficking details, and platform readiness.",
+            "milestone": "Campaign shell ready for launch.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-campaign-trafficking",
+                  "number": "TBD",
+                  "title": "Campaign Trafficking JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important campaign trafficking opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          },
+          {
+            "id": "launch-campaign",
+            "title": "Launch Campaign",
+            "summary": "Launch the campaign with clear checks, roles, and escalation routes.",
+            "milestone": "Campaign live with launch checks completed.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-campaign-launch",
+                  "number": "TBD",
+                  "title": "Campaign Launch JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important campaign launch opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          },
+          {
+            "id": "monitoring-optimization",
+            "title": "Monitoring & In-flight Optimization",
+            "summary": "Track live performance and convert signals into optimization actions.",
+            "milestone": "In-flight decisions are visible and accountable.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-in-flight-optimization",
+                  "number": "TBD",
+                  "title": "In-Flight Optimization JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important in-flight optimization opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "analyse",
+        "title": "Analyse",
+        "subtitle": "Measurement & Optimization",
+        "accent": "#f9ab00",
+        "icon": "An",
+        "summary": "Capture performance, produce reporting, and turn campaign results into reusable learning.",
+        "signal": "From results to next-cycle intelligence",
+        "subphases": [
+          {
+            "id": "in-flight-reporting",
+            "title": "In-flight Reporting + VP Scorecard",
+            "summary": "Make live campaign learning visible through reporting and scorecard rituals.",
+            "milestone": "Performance narrative stays available while the campaign is still changeable.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-in-flight-reporting",
+                  "number": "TBD",
+                  "title": "In-Flight Reporting JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important in-flight reporting opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          },
+          {
+            "id": "end-report",
+            "title": "End-report",
+            "summary": "Close the campaign with findings, implications, and reusable learning for future planning.",
+            "milestone": "Learning is captured and routed into the next strategic cycle.",
+            "lanes": {
+              "jtbd": [
+                {
+                  "id": "placeholder-end-reporting",
+                  "number": "TBD",
+                  "title": "End Reporting JTBD",
+                  "summary": "Placeholder card for the next content pass. The navigation and detail model are ready for the real workshop material.",
+                  "status": "Placeholder"
+                }
+              ],
+              "opportunities": [
+                "Capture the most important end reporting opportunities from the workshop outputs.",
+                "Separate team-owned opportunities from shared system opportunities."
+              ],
+              "enabledBy": [
+                "Workshop artefacts",
+                "Team rituals",
+                "Shared planning inputs"
+              ],
+              "enablers": [
+                "Prioritized tools and agents",
+                "Decision support templates",
+                "Reusable knowledge base"
+              ],
+              "valueCreation": [
+                "Better handoffs",
+                "Faster decisions",
+                "More reusable learning"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "valueTree": {
+    "themes": [
+      {
+        "id": "efficiency",
+        "title": "Efficiency",
+        "dimensions": [
+          {
+            "id": "cost-speed",
+            "title": "Cost Speed",
+            "opportunities": [
+              {
+                "id": "vt-1",
+                "title": "Automated Strategy-to-Production Handoff",
+                "enablers": [
+                  "Creative Wishlist Agent",
+                  "Asset Tracker Integration"
+                ],
+                "kpis": [
+                  "Handoff time reduction",
+                  "Rework rate"
+                ],
+                "kpiMetrics": "Hypotheses/qtr · Acceptance % · Performance lift %"
+              },
+              {
+                "id": "vt-2",
+                "title": "Connected Research Infrastructure",
+                "enablers": [
+                  "5C Intelligence Layer",
+                  "Cross-source Triangulation"
+                ],
+                "kpis": [
+                  "Research reuse rate",
+                  "Time to insight"
+                ],
+                "kpiMetrics": "Hypotheses/qtr · Acceptance % · Performance lift %"
+              }
+            ]
+          },
+          {
+            "id": "speed-performance",
+            "title": "Speed Performance",
+            "opportunities": [
+              {
+                "id": "vt-3",
+                "title": "Live Scenario Planning Capability",
+                "enablers": [
+                  "Scenario Modelling Engine"
+                ],
+                "kpis": [
+                  "Planning cycle time",
+                  "Scenario coverage"
+                ],
+                "kpiMetrics": "Hypotheses/qtr · Acceptance % · Performance lift %"
+              }
+            ]
+          },
+          {
+            "id": "speed-quality",
+            "title": "Speed Quality",
+            "opportunities": [
+              {
+                "id": "vt-4",
+                "title": "Automated Historical Learnings Synthesis",
+                "enablers": [
+                  "PCA Knowledge Agent",
+                  "Learning Retrieval Layer"
+                ],
+                "kpis": [
+                  "Learnings reuse %",
+                  "Repeat-mistake %"
+                ],
+                "kpiMetrics": "% with learnings at inception · Repeat-mistake · %"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "effectiveness",
+        "title": "Effectiveness",
+        "dimensions": [
+          {
+            "id": "performance-quality",
+            "title": "Performance Quality",
+            "opportunities": [
+              {
+                "id": "vt-5",
+                "title": "Growth Opportunity Surfacing",
+                "enablers": [
+                  "Competitive Intelligence Agent",
+                  "Category Benchmark Engine"
+                ],
+                "kpis": [
+                  "Opportunities identified/qtr",
+                  "White-space accuracy"
+                ],
+                "kpiMetrics": "Hypotheses/qtr · Acceptance % · Performance lift %"
+              },
+              {
+                "id": "vt-6",
+                "title": "Dynamic Product Insights Access",
+                "enablers": [
+                  "Product Signal Connector",
+                  "Google 1P Data Bridge"
+                ],
+                "kpis": [
+                  "Plans with context %",
+                  "Relevance Δ",
+                  "Access time (hrs)"
+                ],
+                "kpiMetrics": "% plans with context · Relevance Δ · Access time (hrs)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "execution",
+        "title": "Execution",
+        "dimensions": [
+          {
+            "id": "scalability-satisfaction",
+            "title": "Scalability Satisfaction",
+            "opportunities": [
+              {
+                "id": "vt-7",
+                "title": "Cross-PA Knowledge Sharing at Scale",
+                "enablers": [
+                  "Centralised Knowledge Base",
+                  "Learning Distribution Agent"
+                ],
+                "kpis": [
+                  "Monthly active users",
+                  "Self-serve %",
+                  "Adoption %"
+                ],
+                "kpiMetrics": "Monthly active users · Self-serve % · Adoption %"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "id": "te-1",
+      "title": "Marketing Brief Agent",
+      "description": "AI agent that collects brief-related conversations across channels into one source of truth, eliminating manual assembly.",
+      "phaseId": "discover",
+      "subphaseId": "strategic-direction",
+      "type": "agent",
+      "startDate": "2025-02-10",
+      "endDate": "2025-05-20"
+    },
+    {
+      "id": "te-2",
+      "title": "Brief Quality Score",
+      "description": "Automated scoring system that evaluates incoming marketing briefs for completeness across KPIs, audience, budget, and timelines.",
+      "phaseId": "discover",
+      "subphaseId": "strategic-direction",
+      "type": "tool",
+      "startDate": "2025-03-03",
+      "endDate": "2025-06-15"
+    },
+    {
+      "id": "te-3",
+      "title": "5C Intelligence Layer",
+      "description": "Persistent intelligence layer across Consumer, Category, Comms, Company, and Culture that eliminates per-sprint rebuild.",
+      "phaseId": "discover",
+      "subphaseId": "long-range-planning",
+      "type": "tool",
+      "startDate": "2025-04-01",
+      "endDate": "2025-09-30"
+    },
+    {
+      "id": "te-4",
+      "title": "Competitive Signal Monitor",
+      "description": "Unified competitive agent consolidating Charm, Meow, and Strategic Insights with SEMRush and Google Trends data.",
+      "phaseId": "discover",
+      "subphaseId": "long-range-planning",
+      "type": "agent",
+      "startDate": "2025-05-12",
+      "endDate": "2025-10-18"
+    },
+    {
+      "id": "te-5",
+      "title": "Media Plan Optimizer",
+      "description": "Automated channel plan refinement connecting strategy, budget, targeting, and timing constraints.",
+      "phaseId": "create",
+      "subphaseId": "media-plan",
+      "type": "tool",
+      "startDate": "2025-06-02",
+      "endDate": "2025-09-25"
+    },
+    {
+      "id": "te-6",
+      "title": "Asset Production Tracker",
+      "description": "Real-time coordination of asset needs, creative asks, and production dependencies across teams.",
+      "phaseId": "create",
+      "subphaseId": "asset-tracker",
+      "type": "process",
+      "startDate": "2025-03-17",
+      "endDate": "2025-07-10"
+    },
+    {
+      "id": "te-7",
+      "title": "Campaign QA Automation",
+      "description": "Structured pre-launch verification checking brand safety, measurement specs, and compliance requirements.",
+      "phaseId": "activate",
+      "subphaseId": "launch-campaign",
+      "type": "tool",
+      "startDate": "2025-07-07",
+      "endDate": "2025-10-31"
+    },
+    {
+      "id": "te-8",
+      "title": "In-flight Performance Agent",
+      "description": "Post-launch monitoring that verifies delivery within 48 hours and catches pacing or measurement issues.",
+      "phaseId": "activate",
+      "subphaseId": "monitoring-optimization",
+      "type": "agent",
+      "startDate": "2025-08-04",
+      "endDate": "2025-12-19"
+    },
+    {
+      "id": "te-9",
+      "title": "VP Scorecard Dashboard",
+      "description": "Weekly reporting that translates dashboard data into insight-based commentary for Google leadership.",
+      "phaseId": "analyse",
+      "subphaseId": "in-flight-reporting",
+      "type": "tool",
+      "startDate": "2025-05-01",
+      "endDate": "2025-11-28"
+    },
+    {
+      "id": "te-10",
+      "title": "PCA Knowledge Agent",
+      "description": "Historical knowledge agent that surfaces what worked and what didn't without requiring someone to locate scattered decks.",
+      "phaseId": "analyse",
+      "subphaseId": "end-report",
+      "type": "agent",
+      "startDate": "2025-09-15",
+      "endDate": "2025-12-20"
+    }
+  ]
+}

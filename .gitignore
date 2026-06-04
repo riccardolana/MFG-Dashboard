@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS / editor
+.DS_Store
+
+# Tooling / local / secrets
+.claude/
+.env
+.env.*
+
+# Legacy (pre-v3) — not part of the deployed app. Anchored with "/" so the
+# matching files/dirs under web/ (e.g. web/assets, web/app.js) are NOT excluded.
+/v2/
+/v3/
+/assets/
+/app.js
+/data.js
+/index.html
+/styles.css
+/strategy-planning-map-share.html
+/excel-mapping.html
+/intro.md
+/Information architecture.pdf

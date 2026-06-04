@@ -1,0 +1,14 @@
+[project]
+name = "strategy-planning-map-server"
+version = "3.0.0"
+description = "FastAPI backend for the MFG Strategy Planning Map (serves API + static frontend)."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.7",
+    "openpyxl>=3.1",
+]
+
+[tool.uv]
+package = false
