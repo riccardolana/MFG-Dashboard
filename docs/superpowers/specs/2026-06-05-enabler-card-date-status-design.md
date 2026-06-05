@@ -27,8 +27,11 @@ Plus: commit the existing standalone **demo** (`v3/demo/`) and document it.
 
 - **Persistence:** in-memory only, matching current date behavior. **No backend changes.**
 - **Status stages:** `Not started → In progress → Completed`, default **`Not started`**.
-- **Date confirm pattern:** **contextual / dirty** — a ✓ (confirm) and ✗ (cancel) appear
-  **only when the date value changes**; ✓ applies, ✗ reverts. No clutter when untouched.
+- **Confirm pattern:** **one shared, card-level confirm** (contextual / dirty). The status
+  dropdown and date input sit on the **same card** and are **horizontally aligned on one
+  row**. Editing *either* control marks the card dirty and reveals a single ✓ (confirm) /
+  ✗ (cancel) pair — ✓ commits **both** the date and the status, ✗ reverts **both**. No
+  buttons when nothing changed. Status therefore does **not** apply instantly; it waits for ✓.
 - **Demo:** rebuild via `build-demo.cjs` after changes, commit `v3/demo/`, add a short
   README note.
 
@@ -47,18 +50,25 @@ Stored on the in-memory `timelineEnablers` objects (same place `endDate` is muta
 
 ## Components
 
-Two small render helpers (used by all three card sites — avoids triplicated markup):
+One render helper for the whole editable row (used by all three card sites — avoids
+triplicated markup and keeps the shared-confirm logic in one place):
 
-- **`renderStatusSelect(enabler)`** → a `<select class="enabler-status-select is-<state>">`
-  with the three options, current one selected, `data-enabler-field="status"`,
-  `data-enabler-id`, and `onclick="event.stopPropagation()"` so it doesn't open the modal.
-- **`renderDateEditor(enabler)`** → wrapper `.enabler-date-edit` containing the existing
-  `<input type="date" class="enabler-date-input" data-original="<endDate>">` plus a
-  `.enabler-date-confirm` group with ✓ (`data-action="confirm-date"`) and ✗
-  (`data-action="cancel-date"`) buttons, all `data-enabler-id`.
+- **`renderEnablerControls(enabler)`** → a `.enabler-controls` wrapper (`data-enabler-id`,
+  `display:flex`, horizontally aligned) containing, on one row:
+  1. a **status** `<select class="enabler-status-select is-<state>">` with the three
+     options, current one selected, `data-enabler-field="status"`,
+     `data-original="<status>"`;
+  2. the **date** `<input type="date" class="enabler-date-input"
+     data-enabler-field="endDate" data-original="<endDate>">`;
+  3. a `.enabler-confirm` group with ✓ (`data-action="confirm-enabler"`) and ✗
+     (`data-action="cancel-enabler"`) buttons, hidden unless the wrapper has `.is-dirty`.
 
-These replace the inline date-input markup at the three sites
-(`renderEnablerGrid`, `renderTimelineCard`, enabler modal).
+  All interactive elements call `event.stopPropagation()` so editing doesn't open the modal.
+
+This single helper replaces the inline date-input markup at the three sites
+(`renderEnablerGrid`, `renderTimelineCard`, enabler modal). On the compact **timeline** card
+the row may wrap (status above, date+confirm below) if width is tight — but aligned
+horizontally wherever space allows.
 
 ### Status colour coding (CSS)
 
@@ -73,21 +83,22 @@ dot via `::before` or inline padding):
 
 ## Behaviour & event flow
 
-Refactor the single `change` listener at `web/app.js:1080` into clear, separate flows:
+Replace the single auto-saving `change` listener at `web/app.js:1080` with a card-level
+dirty/confirm flow keyed off `.enabler-controls`:
 
-- **Status (immediate apply):** `change` on `.enabler-status-select` → write
-  `enabler.status = value` → re-render current page (`renderTimelinePage` / `renderContent`;
-  modal stays open if open). A discrete choice needs no confirmation.
-- **Date (dirty → confirm):**
-  - `input` on `.enabler-date-input` → compare `value` vs `data-original`; toggle
-    `.is-dirty` on the closest `.enabler-date-edit`. **No save.**
-  - Click `[data-action="confirm-date"]` → read the sibling input's value, write
-    `enabler.endDate`, re-render (timeline card repositions to the new completion month).
-  - Click `[data-action="cancel-date"]` → reset input to `data-original`, remove
-    `.is-dirty`. No re-render needed.
-  - Confirm/cancel clicks call `event.stopPropagation()` so the card's modal-open click
-    doesn't fire. They hook into the existing `data-action` click delegation (used by
-    `add-enabler`); verify that handler during implementation.
+- **Mark dirty (no save):** an `input`/`change` on either `.enabler-status-select` or
+  `.enabler-date-input` compares each control's `value` against its `data-original`; if
+  *either* differs, add `.is-dirty` to the closest `.enabler-controls` (revealing ✓/✗),
+  else remove it. Nothing is written yet.
+- **Confirm** — click `[data-action="confirm-enabler"]` → within that `.enabler-controls`,
+  read the status select and the date input, write `enabler.status` and `enabler.endDate`,
+  then re-render the current view (`renderTimelinePage` / `renderContent`; re-render the
+  modal body if open). The timeline card repositions to the new completion month.
+- **Cancel** — click `[data-action="cancel-enabler"]` → reset both controls to their
+  `data-original` values and remove `.is-dirty`. No write, no re-render needed.
+- All confirm/cancel/control interactions call `event.stopPropagation()` so the card's
+  modal-open click doesn't fire. Confirm/cancel hook into the existing `data-action` click
+  delegation (used by `add-enabler`); verify that handler during implementation.
 
 Re-rendering rebuilds the DOM, so dirty state resets naturally after a confirm.
 
@@ -105,15 +116,15 @@ Re-rendering rebuilds the DOM, so dirty state resets naturally after a confirm.
 
 - Backend persistence / write API / storage.
 - Status in the Excel→schema mapping or `fallback.json`.
-- Status confirmation button (dropdown applies immediately by design).
 - Filtering/grouping the timeline by status.
 
 ## Verification
 
 1. Run locally (`cd server && uv run uvicorn app.main:app --reload --port 8000`).
-2. **Subphase lane, timeline, and modal** each show: a colour-coded status dropdown that
-   updates immediately on change; a date field that reveals ✓/✗ **only after** the value
-   changes; ✓ applies (timeline card moves to the new month), ✗ reverts.
+2. **Subphase lane, timeline, and modal** each show the status dropdown and date input
+   **horizontally aligned on one row**. Editing *either* reveals a single ✓/✗; ✓ commits
+   both (timeline card moves to the new month, status colour updates), ✗ reverts both. No
+   buttons when untouched.
 3. Reload → date and status reset to source data (confirms in-memory behavior).
 4. Rebuild demo, open `v3/demo/strategy-map-demo.html` directly in a browser (no server) →
    same behavior.
