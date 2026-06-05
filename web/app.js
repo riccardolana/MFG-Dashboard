@@ -1042,6 +1042,29 @@ document.addEventListener("click", e => {
       renderContent();
       return;
     }
+    if (action === "confirm-enabler-edit") {
+      const wrap = actionBtn.closest(".enabler-controls");
+      if (!wrap) return;
+      const en = timelineEnablers.find(x => x.id === wrap.dataset.enablerId);
+      if (!en) return;
+      const sel = wrap.querySelector(".enabler-status-select");
+      const dateInput = wrap.querySelector(".enabler-date-input");
+      if (sel) en.status = sel.value;
+      if (dateInput) en.endDate = dateInput.value;
+      if (state.activeEnablerId === en.id) openEnablerModal(en.id);
+      else if (state.page === "timeline") renderTimelinePage();
+      else renderContent();
+      return;
+    }
+    if (action === "cancel-enabler-edit") {
+      const wrap = actionBtn.closest(".enabler-controls");
+      if (!wrap) return;
+      wrap.querySelectorAll("[data-original]").forEach(el => { el.value = el.dataset.original; });
+      const sel = wrap.querySelector(".enabler-status-select");
+      if (sel) sel.className = "enabler-status-select " + statusClass(sel.value);
+      wrap.classList.remove("is-dirty");
+      return;
+    }
     if (action === "goto-phase") {
       if (state.activeEnablerId) closeEnablerModal();
       else closeModal();
@@ -1105,15 +1128,22 @@ el.modalScrim.addEventListener("click", () => {
 el.searchScrim.addEventListener("click", closeSearch);
 el.searchInput.addEventListener("input", e => runSearch(e.target.value));
 
-document.addEventListener("change", e => {
-  const input = e.target.closest(".enabler-date-input");
-  if (!input) return;
-  const enabler = timelineEnablers.find(en => en.id === input.dataset.enablerId);
-  if (!enabler) return;
-  enabler[input.dataset.enablerField] = input.value;
-  if (state.page === "timeline") renderTimelinePage();
-  if (state.page === "phase") renderContent();
-});
+// Editing the status or the date marks the enabler card dirty (revealing ✓/✗);
+// nothing is written until the user confirms. Both `input` and `change` are handled so
+// the <select> and the date <input> are caught reliably across browsers.
+function markEnablerDirty(e) {
+  const ctrl = e.target.closest(".enabler-status-select, .enabler-date-input");
+  if (!ctrl) return;
+  const wrap = ctrl.closest(".enabler-controls");
+  if (!wrap) return;
+  const sel = wrap.querySelector(".enabler-status-select");
+  if (sel) sel.className = "enabler-status-select " + statusClass(sel.value);
+  const dirty = [...wrap.querySelectorAll("[data-original]")]
+    .some(el => el.value !== el.dataset.original);
+  wrap.classList.toggle("is-dirty", dirty);
+}
+document.addEventListener("input", markEnablerDirty);
+document.addEventListener("change", markEnablerDirty);
 
 document.addEventListener("keydown", e => {
   if (e.key === "Escape") {
