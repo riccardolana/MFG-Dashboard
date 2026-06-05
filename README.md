@@ -25,3 +25,14 @@ uv run uvicorn app.main:app --reload --port 8000
 gcloud run deploy strategy-map --source . --region europe-west1 --allow-unauthenticated
 ```
 Live: https://strategy-map-454573262443.europe-west1.run.app
+
+## Demo (standalone, no server)
+
+`v3/demo/strategy-map-demo.html` is a single self-contained file built from `web/` via
+`node v3/demo/build-demo.cjs` (inlines CSS/JS and base64-encodes assets). Open it directly
+in a browser to share without deploying. Rebuild it after any change under `web/`.
+
+On enabler cards (subphase lane, timeline, and modal) you can edit the **Expected
+completion** date and the **Integration status** (Not started → In progress → Completed).
+Status and date share one row and a single confirm: ✓ applies both, ✗ reverts. These edits
+are **in-memory only** and reset on reload.
