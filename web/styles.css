@@ -1414,6 +1414,53 @@ details[open] > summary .panel-section__chevron {
   max-width: 130px;
 }
 
+/* ── Enabler card controls: status + date on one row, shared dirty confirm ── */
+.enabler-controls {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.enabler-control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.enabler-status-select,
+.enabler-controls .enabler-date-input {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-family: inherit;
+  background: var(--surface-solid);
+  cursor: pointer;
+}
+/* status colour states */
+.enabler-status-select.is-notstarted { color: var(--muted); border-color: var(--line); }
+.enabler-status-select.is-inprogress { color: #c08607; border-color: rgba(249,171,0,0.5); background: rgba(249,171,0,0.08); }
+.enabler-status-select.is-completed  { color: #2e8b48; border-color: rgba(52,168,83,0.5); background: rgba(52,168,83,0.08); }
+/* shared confirm — hidden until the card is dirty */
+.enabler-confirm { display: none; gap: 4px; }
+.enabler-controls.is-dirty .enabler-confirm { display: inline-flex; }
+.enabler-confirm button {
+  width: 28px; height: 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-solid);
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.enabler-confirm__ok { color: var(--green); border-color: rgba(52,168,83,0.5); }
+.enabler-confirm__ok:hover { background: rgba(52,168,83,0.12); }
+.enabler-confirm__cancel { color: var(--red); border-color: rgba(234,67,53,0.4); }
+.enabler-confirm__cancel:hover { background: rgba(234,67,53,0.1); }
+
 /* ── Overview Page ── */
 .overview-header {
   margin-bottom: 24px;
