@@ -491,7 +491,7 @@ function renderOverviewPage() {
 
 function renderOverviewColumn(phase) {
   return `
-    <div class="phase-column" style="--col-accent:${phase.accent}">
+    <div class="phase-column phase-column--${phase.id}" style="--col-accent:${phase.accent}">
       <div class="phase-column__header" style="background:${phase.accent}">
         <strong>${esc(phase.title)}</strong>
         <small>${esc(phase.subtitle)}</small>

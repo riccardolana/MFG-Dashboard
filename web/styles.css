@@ -181,9 +181,27 @@ ul { margin: 0; padding: 0; list-style: none; }
   transition: all var(--transition-fast);
 }
 
+/* Selected state: remove the square fill, darken the letter (Figma node 200:3599) */
 .phase-btn.is-active .phase-btn__icon {
-  background: color-mix(in srgb, var(--accent) 28%, white);
+  background: transparent;
 }
+
+/* Per-phase icon squares — exact Figma hexes. Unselected: accent tint + lighter letter. */
+.phase-btn[data-phase="discover"] .phase-btn__icon { background: rgba(66,133,244,0.2); color: #5b94f5; }
+.phase-btn[data-phase="create"]   .phase-btn__icon { background: rgba(234,67,53,0.2); color: #ee695d; }
+.phase-btn[data-phase="activate"] .phase-btn__icon { background: rgba(52,168,83,0.2); color: #5db975; }
+.phase-btn[data-phase="analyse"]  .phase-btn__icon { background: rgba(249,171,0,0.2); color: #fabc33; }
+
+/* Selected phase: square fill removed, darker accent letter */
+.phase-btn.is-active[data-phase="discover"] .phase-btn__icon { background: transparent; color: #1a53b2; }
+.phase-btn.is-active[data-phase="create"]   .phase-btn__icon { background: transparent; color: #bf3a30; }
+.phase-btn.is-active[data-phase="activate"] .phase-btn__icon { background: transparent; color: #2c8445; }
+.phase-btn.is-active[data-phase="analyse"]  .phase-btn__icon { background: transparent; color: #c08607; }
+
+/* Special nav icons — exact Figma hexes */
+.phase-btn[data-page="overview-all"] .phase-btn__icon { background: #f1f1f1; color: #5f6368; }
+.phase-btn[data-page="value-tree"]   .phase-btn__icon { background: #efe9ff; color: #6750a4; }
+.phase-btn[data-page="timeline"]     .phase-btn__icon { background: #ebebeb; color: #5f6368; }
 
 .phase-btn__icon svg {
   width: 20px;
@@ -1229,7 +1247,7 @@ details[open] > summary .panel-section__chevron {
 .overview-opp-card {
   padding: 10px 12px;
   border: 1px solid var(--line);
-  border-left: 3px solid #ef9a9a;
+  border-left: 3px solid var(--line-strong);
   border-radius: var(--radius-sm);
   background: rgba(255,255,255,0.7);
   margin-bottom: 6px;
@@ -1237,7 +1255,7 @@ details[open] > summary .panel-section__chevron {
 
 .overview-opp-card__title {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.25;
   margin-bottom: 3px;
 }
@@ -1438,8 +1456,8 @@ details[open] > summary .panel-section__chevron {
 
 .phase-column__header strong {
   display: block;
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -1447,7 +1465,7 @@ details[open] > summary .panel-section__chevron {
 .phase-column__header small {
   display: block;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   opacity: 0.8;
   margin-top: 2px;
   text-transform: uppercase;
@@ -1466,7 +1484,7 @@ details[open] > summary .panel-section__chevron {
   list-style: none;
   padding: 14px 16px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -1548,7 +1566,7 @@ details[open] > summary .subphase-block__chevron {
 
 .overview-jtbd__num {
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 700;
   padding: 2px 6px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--col-accent) 12%, transparent);
@@ -1557,7 +1575,7 @@ details[open] > summary .subphase-block__chevron {
 
 .overview-jtbd h4 {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.25;
   margin-bottom: 4px;
 }
@@ -1597,7 +1615,7 @@ details[open] > summary .subphase-block__chevron {
   padding: 6px 0;
   font-size: 10px;
   font-weight: 700;
-  color: #c62828;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   display: flex;
@@ -1623,8 +1641,8 @@ details[open] > summary .subphase-block__chevron {
   font-weight: 700;
   padding: 1px 5px;
   border-radius: 999px;
-  background: #fce4ec;
-  color: #c62828;
+  background: color-mix(in srgb, var(--col-accent) 12%, white);
+  color: color-mix(in srgb, var(--col-accent) 80%, var(--ink));
 }
 
 .overview-opps__section-body {
@@ -1642,6 +1660,23 @@ details[open] > summary .subphase-block__chevron {
 .overview-opp-item:last-child {
   border-bottom: 0;
 }
+
+/* Per-phase opportunity colours — exact Figma hexes (node 240:124, "colors updated") */
+.phase-column--discover .overview-opps__section > summary { color: #396fc9; }
+.phase-column--discover .overview-opps__count { background: rgba(66,133,244,0.12); color: #396fc9; }
+.phase-column--discover .overview-opp-card { border-left-color: rgba(66,133,244,0.35); }
+
+.phase-column--create .overview-opps__section > summary { color: #c62828; }
+.phase-column--create .overview-opps__count { background: #fce4ec; color: #c62828; }
+.phase-column--create .overview-opp-card { border-left-color: #ef9a9a; }
+
+.phase-column--activate .overview-opps__section > summary { color: #2e8b48; }
+.phase-column--activate .overview-opps__count { background: rgba(52,168,83,0.12); color: #2e8b48; }
+.phase-column--activate .overview-opp-card { border-left-color: rgba(52,168,83,0.35); }
+
+.phase-column--analyse .overview-opps__section > summary { color: #c08607; }
+.phase-column--analyse .overview-opps__count { background: rgba(249,171,0,0.12); color: #c08607; }
+.phase-column--analyse .overview-opp-card { border-left-color: rgba(249,171,0,0.4); }
 
 /* ── Value Tree Page ── */
 .vt-header {
