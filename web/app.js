@@ -455,12 +455,7 @@ function renderEnablerGrid(sub) {
           </div>
           <div class="enabler-lane-card__title">${esc(matched.title)}</div>
           <div class="enabler-lane-card__desc">${esc(matched.description)}</div>
-          <div class="enabler-lane-card__dates">
-            <label>
-              <span>Expected completion</span>
-              <input type="date" class="enabler-date-input" data-enabler-field="endDate" data-enabler-id="${matched.id}" value="${matched.endDate}" onclick="event.stopPropagation()">
-            </label>
-          </div>
+          ${renderEnablerControls(matched)}
         </div>
       `;
     }
@@ -741,8 +736,8 @@ function renderTimelineCard(enabler, months) {
       <div class="tl-card__desc">${esc(enabler.description)}</div>
       <div class="tl-card__meta">
         <span class="tl-type-badge type-${enabler.type}">${esc(enabler.type)}</span>
-        <input type="date" class="tl-date-input enabler-date-input" data-enabler-field="endDate" data-enabler-id="${enabler.id}" value="${enabler.endDate}" onclick="event.stopPropagation()">
       </div>
+      ${renderEnablerControls(enabler)}
       <span class="tl-card__anchor" aria-hidden="true"></span>
     </div>
   `;
@@ -895,13 +890,8 @@ function openEnablerModal(enablerId) {
     </div>
     <div class="modal-body">
       <div class="panel-section" style="border:1px solid var(--line);border-radius:var(--radius);padding:16px;">
-        <div style="font-weight:700;margin-bottom:12px;">Timeline</div>
-        <div style="display:flex;gap:16px;">
-          <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--muted);">
-            Expected completion date
-            <input type="date" class="enabler-date-input" data-enabler-field="endDate" data-enabler-id="${enabler.id}" value="${enabler.endDate}" style="padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-sm);font-size:13px;font-family:inherit;background:var(--surface-solid);">
-          </label>
-        </div>
+        <div style="font-weight:700;margin-bottom:12px;">Integration</div>
+        ${renderEnablerControls(enabler)}
       </div>
       <button class="jtbd-open-btn" type="button" data-action="goto-phase" data-phase="${enabler.phaseId}" data-subphase="${enabler.subphaseId}" style="margin-top:8px;">
         Go to ${phase.title} →
