@@ -399,6 +399,44 @@ function renderInsightGrid(items) {
   `).join("")}</div>`;
 }
 
+const ENABLER_STATUSES = ["Not started", "In progress", "Completed"];
+
+function statusClass(status) {
+  const s = status || "Not started";
+  if (s === "In progress") return "is-inprogress";
+  if (s === "Completed") return "is-completed";
+  return "is-notstarted";
+}
+
+// Status dropdown + expected-completion date on one aligned row, sharing a single
+// dirty-gated confirm (✓ commits both, ✗ reverts both). Used by the subphase lane,
+// the timeline card, and the enabler modal. The enabler id lives on .enabler-controls;
+// inner controls stopPropagation so editing never opens the card's modal.
+function renderEnablerControls(enabler) {
+  const status = enabler.status || "Not started";
+  const options = ENABLER_STATUSES.map(s =>
+    `<option value="${s}"${s === status ? " selected" : ""}>${s}</option>`
+  ).join("");
+  return `
+    <div class="enabler-controls" data-enabler-id="${enabler.id}">
+      <label class="enabler-control">
+        <span>Status</span>
+        <select class="enabler-status-select ${statusClass(status)}" data-enabler-field="status" data-original="${status}" onclick="event.stopPropagation()">
+          ${options}
+        </select>
+      </label>
+      <label class="enabler-control">
+        <span>Expected completion</span>
+        <input type="date" class="enabler-date-input" data-enabler-field="endDate" data-original="${enabler.endDate}" value="${enabler.endDate}" onclick="event.stopPropagation()">
+      </label>
+      <div class="enabler-confirm">
+        <button type="button" class="enabler-confirm__ok" data-action="confirm-enabler-edit" title="Confirm" onclick="event.stopPropagation()">✓</button>
+        <button type="button" class="enabler-confirm__cancel" data-action="cancel-enabler-edit" title="Cancel" onclick="event.stopPropagation()">✗</button>
+      </div>
+    </div>
+  `;
+}
+
 function renderEnablerGrid(sub) {
   const names = sub.lanes.enablers;
   const phase = getPhase();
