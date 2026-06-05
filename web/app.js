@@ -427,11 +427,11 @@ function renderEnablerControls(enabler) {
       </label>
       <label class="enabler-control">
         <span>Expected completion</span>
-        <input type="date" class="enabler-date-input" data-enabler-field="endDate" data-original="${enabler.endDate}" value="${enabler.endDate}" onclick="event.stopPropagation()">
+        <input type="date" class="enabler-date-input" data-enabler-field="endDate" data-original="${enabler.endDate || ""}" value="${enabler.endDate || ""}" onclick="event.stopPropagation()">
       </label>
       <div class="enabler-confirm">
-        <button type="button" class="enabler-confirm__ok" data-action="confirm-enabler-edit" title="Confirm" onclick="event.stopPropagation()">✓</button>
-        <button type="button" class="enabler-confirm__cancel" data-action="cancel-enabler-edit" title="Cancel" onclick="event.stopPropagation()">✗</button>
+        <button type="button" class="enabler-confirm__ok" data-action="confirm-enabler-edit" title="Confirm">✓</button>
+        <button type="button" class="enabler-confirm__cancel" data-action="cancel-enabler-edit" title="Cancel">✗</button>
       </div>
     </div>
   `;
