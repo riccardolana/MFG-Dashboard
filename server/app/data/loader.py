@@ -3,7 +3,8 @@
 Source of truth is the Excel (`app/excel/strategy.xlsx`, "Data from Miro"). It is mapped
 into the same shape the v3 frontend consumes:
   - strategy : phases -> subphases -> lanes {jtbd, opportunities, enablers}
-  - valueTree: dropped (pending Figma) -> {themes: []}
+  - valueTree: phases -> value dimensions -> opportunities {enablers, kpis, shared}
+               (from the "Value Trees" + "Value Framework" sheets)
   - timeline : the 84-item enabler catalog (sheet 2), as the objects the enabler lane
                matches against (no dates; the dated timeline view was dropped)
 
