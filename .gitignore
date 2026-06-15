@@ -11,16 +11,8 @@ __pycache__/
 .env
 .env.*
 
-# Legacy (pre-v3) — not part of the deployed app. Anchored with "/" so the
-# matching files/dirs under web/ (e.g. web/assets, web/app.js) are NOT excluded.
-/v2/
+# Legacy (pre-v3) prototypes — moved to archived/, kept out of git.
+/archived/
+# v3 dev/demo material + generated coverage artifact — not part of the deployed app.
 /v3/
-/assets/
-/app.js
-/data.js
-/index.html
-/styles.css
-/strategy-planning-map-share.html
 /excel-mapping.html
-/intro.md
-/Information architecture.pdf
