@@ -90,6 +90,17 @@ def _vt_clean(cell) -> str:
     return "" if cell is None else str(cell).replace("\xa0", " ").strip()
 
 
+def _enabler_code(raw) -> str:
+    """Enabler catalog ID -> the 'NN.NN' code used in Value Tree refs (e.g. '#01.16').
+
+    The Excel stores it as '01:16:00' (often a time-typed cell), so take the first two
+    groups and join with a dot: '01:16:00' -> '01.16'. Returns '' if unparseable.
+    """
+    s = _vt_clean(raw)
+    parts = [p for p in re.split(r"[:.]", s) if p.strip()]
+    return ".".join(parts[:2]) if len(parts) >= 2 else s
+
+
 def _vt_kpis(cell) -> list[str]:
     """KPIs live in one cell, '·'-separated."""
     return [p.strip() for p in _vt_clean(cell).split("·") if p.strip()]
@@ -301,6 +312,7 @@ def _load_excel() -> StrategyResponse:
         pid = _PHASE_ALIAS.get(excel_phase.lower(), _slug(excel_phase))
         timeline.append({
             "id": f"en-{i}",
+            "code": _enabler_code(r[0]),
             "title": str(name).strip(),
             "description": (r[6] or "").strip(),
             "type": _enabler_type(r[2]),
