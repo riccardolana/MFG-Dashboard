@@ -628,63 +628,91 @@ function renderOverviewOpps(opps) {
 }
 
 // ── Value Tree Page ──
-// Opportunities live per-subphase as { mfgFocus: [{title, description}] }; the value tree
-// aggregates them per phase. Enablers/KPIs are placeholders (no theme split yet) per decision.
-const VT_KPI_PLACEHOLDER = "Hypotheses/qtr · Acceptance % · Performance lift %";
+// Driven by the API/fallback `valueTreeData` (Excel "Value Trees" + "Value Framework" sheets):
+// phase -> value dimension (with definition) -> opportunity {shared, enablers, kpis}.
+function getValueTree() {
+  const vt = (typeof valueTreeData !== "undefined" && valueTreeData) || {};
+  return Array.isArray(vt.phases) ? vt.phases : [];
+}
 
-function phaseOpportunities(phase) {
-  const opps = [];
-  (phase.subphases || []).forEach(sub => {
-    const o = sub.lanes && sub.lanes.opportunities;
-    if (o && Array.isArray(o.mfgFocus)) opps.push(...o.mfgFocus);
-  });
-  return opps;
+function vtPhaseOppCount(phase) {
+  return (phase.dimensions || []).reduce(
+    (n, d) => n + (d.opportunities ? d.opportunities.length : 0), 0);
 }
 
 function renderValueTreePage() {
+  const phases = getValueTree();
   el.content.innerHTML = `
     <div class="vt-header">
-      <h1>Value Tree – All Levers</h1>
-      <p>Every opportunity mapped to all associated value levers.</p>
+      <h1>Value Tree Map</h1>
+      <p>Each phase mapped through its value dimensions to the opportunities, enablers, and KPIs that create value.</p>
     </div>
-    ${strategyData.phases.map(renderValuePhase).join("")}
+    ${phases.length
+      ? phases.map(renderVtPhase).join("")
+      : `<p class="vt-empty">No value tree data available.</p>`}
   `;
 }
 
-function renderValuePhase(phase) {
-  const opps = phaseOpportunities(phase);
+function renderVtPhase(phase) {
+  const dims = phase.dimensions || [];
   return `
-    <div class="vt-phase" style="--phase-accent:${phase.accent}">
+    <section class="vt-phase" style="--phase-accent:${phase.accent || "var(--muted)"}">
       <div class="vt-phase__header">
         <span class="vt-phase__dot"></span>
         <span class="vt-phase__title">${esc(phase.title)}</span>
-        <span class="vt-phase__count">${opps.length}</span>
+        <span class="vt-phase__count">${vtPhaseOppCount(phase)} opportunities</span>
       </div>
-      <div class="vt-grid">
+      ${dims.length
+        ? dims.map(renderVtDimension).join("")
+        : `<p class="vt-empty">No value dimensions captured for this phase yet.</p>`}
+    </section>
+  `;
+}
+
+function renderVtDimension(dim) {
+  const opps = dim.opportunities || [];
+  return `
+    <div class="vt-dimension">
+      <div class="vt-dimension__header">
+        <span class="vt-dimension__name">${esc(dim.name)}</span>
+        ${dim.definition ? `<span class="vt-dimension__def">${esc(dim.definition)}</span>` : ""}
+      </div>
+      <div class="vt-dimension__body">
         ${opps.length
-          ? opps.map(renderOppLever).join("")
-          : `<p class="vt-empty">No key opportunities captured for this phase yet.</p>`}
+          ? opps.map(renderVtOpp).join("")
+          : `<p class="vt-empty">No opportunities captured.</p>`}
       </div>
     </div>
   `;
 }
 
-function renderOppLever(opp) {
+function renderVtOpp(opp) {
+  const enablers = opp.enablers || [];
+  const kpis = opp.kpis || [];
   return `
-    <div class="opp-card">
-      <span class="opp-badge">Key Opportunity</span>
+    <article class="opp-card">
+      <div class="opp-card__head">
+        <span class="opp-badge">Opportunity</span>
+        ${opp.shared ? `<span class="opp-card__shared">Shared</span>` : ""}
+      </div>
       <h3>${esc(opp.title)}</h3>
-      <div class="opp-levers">
-        <div class="opp-lever">
-          <span class="opp-pill">Enablers</span>
-          <span class="opp-lever__value">Enabler TBD</span>
-        </div>
-        <div class="opp-lever">
-          <span class="opp-pill">KPIs</span>
-          <span class="opp-lever__value">${VT_KPI_PLACEHOLDER}</span>
+      <div class="opp-block">
+        <span class="opp-pill">Enablers</span>
+        <div class="opp-enablers">
+          ${enablers.length
+            ? enablers.map(e => `<span class="opp-enabler">${esc(e)}</span>`).join("")
+            : `<span class="opp-lever__value">—</span>`}
         </div>
       </div>
-    </div>
+      <div class="opp-block">
+        <span class="opp-pill">KPIs</span>
+        <ul class="opp-kpis">
+          ${kpis.length
+            ? kpis.map(k => `<li>${esc(k)}</li>`).join("")
+            : `<li class="opp-lever__value">—</li>`}
+        </ul>
+      </div>
+    </article>
   `;
 }
 
