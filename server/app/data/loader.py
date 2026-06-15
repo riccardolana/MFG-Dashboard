@@ -85,6 +85,105 @@ def _enabler_type(raw) -> str:
     return "agent" if "agent" in t else "tool"
 
 
+def _vt_clean(cell) -> str:
+    return "" if cell is None else str(cell).replace("\xa0", " ").strip()
+
+
+def _vt_kpis(cell) -> list[str]:
+    """KPIs live in one cell, '·'-separated."""
+    return [p.strip() for p in _vt_clean(cell).split("·") if p.strip()]
+
+
+def _vt_enablers(cell) -> list[str]:
+    """One or more enabler refs, newline-separated; collapse internal whitespace."""
+    out = []
+    for raw in _vt_clean(cell).split("\n"):
+        v = re.sub(r"\s+", " ", raw).strip()
+        if v:
+            out.append(v)
+    return out
+
+
+def _strip_dim_prefix(name: str, definition) -> str:
+    """Definitions are authored as 'Effectiveness: ....' — drop the leading name echo."""
+    d = _vt_clean(definition)
+    prefix = f"{name}:".lower()
+    if d.lower().startswith(prefix):
+        d = d[len(prefix):].strip()
+    return d
+
+
+def _load_value_tree(wb, phase_meta) -> dict:
+    """Build phase -> dimension -> opportunity from the 'Value Trees' (+ 'Value Framework') sheets.
+
+    'Value Trees' is authoritative for the tree (Phase/dimension cells forward-fill, blank on
+    continuation rows). 'Value Framework' supplies each dimension's definition and the per-
+    opportunity 'shared' flag, matched by phase+dimension name and by opportunity title.
+    """
+    if "Value Trees" not in wb.sheetnames:
+        return {"phases": []}
+    tree_ws = wb["Value Trees"]
+    fw_ws = wb["Value Framework"] if "Value Framework" in wb.sheetnames else None
+
+    dim_def: dict[tuple, str] = {}   # (pid, dim_lower) -> definition
+    shared_opp: set[str] = set()     # opportunity title (lower) flagged shared
+    if fw_ws is not None:
+        cur_pid = None
+        for r in list(fw_ws.iter_rows(values_only=True))[1:]:
+            phase = _vt_clean(r[0])
+            if phase.lower() == "value framework legend":
+                break  # legend rows follow the data block
+            if phase:
+                cur_pid = _PHASE_ALIAS.get(phase.lower(), _slug(phase))
+            dim = _vt_clean(r[1])
+            if cur_pid and dim:
+                dim_def[(cur_pid, dim.lower())] = _strip_dim_prefix(dim, r[2])
+            opp_title = _vt_clean(r[4])
+            if opp_title and _vt_clean(r[5]).lower() == "yes":
+                shared_opp.add(opp_title.lower())
+
+    phases: list[dict] = []
+    phase_idx: dict[str, dict] = {}
+    cur_pid = cur_dim = None
+    for r in list(tree_ws.iter_rows(values_only=True))[1:]:
+        phase = _vt_clean(r[0])
+        if phase:
+            cur_pid = _PHASE_ALIAS.get(phase.lower(), _slug(phase))
+        dim = _vt_clean(r[1])
+        if dim:
+            cur_dim = dim
+        title = _vt_clean(r[2])
+        if not (cur_pid and cur_dim and title):
+            continue
+        if cur_pid not in phase_idx:
+            meta = phase_meta.get(cur_pid, {})
+            p = {
+                "id": cur_pid,
+                "title": phase or cur_pid.title(),
+                "accent": meta.get("accent", "#4285f4"),
+                "dimensions": [],
+            }
+            phase_idx[cur_pid] = p
+            phases.append(p)
+        p = phase_idx[cur_pid]
+        dim_obj = next((d for d in p["dimensions"] if d["name"].lower() == cur_dim.lower()), None)
+        if dim_obj is None:
+            dim_obj = {
+                "name": cur_dim,
+                "definition": dim_def.get((cur_pid, cur_dim.lower()), ""),
+                "opportunities": [],
+            }
+            p["dimensions"].append(dim_obj)
+        dim_obj["opportunities"].append({
+            "id": f"vt-{cur_pid}-{_slug(cur_dim)}-{len(dim_obj['opportunities']) + 1}",
+            "title": title,
+            "shared": title.lower() in shared_opp,
+            "enablers": _vt_enablers(r[3]),
+            "kpis": _vt_kpis(r[4]),
+        })
+    return {"phases": phases}
+
+
 def _load_phase_meta() -> dict[str, dict]:
     fb = json.loads(_FALLBACK_JSON.read_text(encoding="utf-8"))
     meta = {}
@@ -237,7 +336,11 @@ def _load_excel() -> StrategyResponse:
         })
 
     return StrategyResponse.model_validate(
-        {"strategy": {"phases": phases}, "valueTree": {"themes": []}, "timeline": timeline}
+        {
+            "strategy": {"phases": phases},
+            "valueTree": _load_value_tree(wb, phase_meta),
+            "timeline": timeline,
+        }
     )
 
 
