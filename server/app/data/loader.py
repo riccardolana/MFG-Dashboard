@@ -185,6 +185,61 @@ def _load_value_tree(wb, phase_meta) -> dict:
     return {"phases": phases}
 
 
+def _load_value_framework(wb, phase_meta) -> dict:
+    """Build phase -> (dimensions, opportunities) from the 'Value Framework' sheet.
+
+    Unlike the value tree, the framework lists each phase's opportunities as a flat run
+    (cols E/F/G) alongside its three value dimensions (cols B/C/D). The two columns happen
+    to share rows but are independent lists, so we accumulate them separately per phase:
+      - dimensions: name (col 1), definition (col 2, 'Name:' prefix dropped),
+        used = "Dimension used in phase?" (col 3) is anything but 'no'.
+      - opportunities: title (col 4), shared = col 5 == 'yes', KPIs (col 6, '·'-separated).
+    The legend block at the bottom (col 0 == 'value framework legend') is skipped.
+    """
+    if "Value Framework" not in wb.sheetnames:
+        return {"phases": []}
+    ws = wb["Value Framework"]
+
+    phases: list[dict] = []
+    phase_idx: dict[str, dict] = {}
+    cur_pid = None
+    for r in list(ws.iter_rows(values_only=True))[1:]:
+        phase = _vt_clean(r[0])
+        if phase.lower() == "value framework legend":
+            break  # legend rows follow the data block
+        if phase:
+            cur_pid = _PHASE_ALIAS.get(phase.lower(), _slug(phase))
+        if not cur_pid:
+            continue
+        if cur_pid not in phase_idx:
+            meta = phase_meta.get(cur_pid, {})
+            p = {
+                "id": cur_pid,
+                "title": phase or cur_pid.title(),
+                "accent": meta.get("accent", "#4285f4"),
+                "dimensions": [],
+                "opportunities": [],
+            }
+            phase_idx[cur_pid] = p
+            phases.append(p)
+        p = phase_idx[cur_pid]
+        dim = _vt_clean(r[1])
+        if dim:
+            p["dimensions"].append({
+                "name": dim,
+                "definition": _strip_dim_prefix(dim, r[2]),
+                "used": _vt_clean(r[3]).lower() != "no",
+            })
+        opp_title = _vt_clean(r[4])
+        if opp_title:
+            p["opportunities"].append({
+                "title": opp_title,
+                "shared": _vt_clean(r[5]).lower() == "yes",
+                "kpis": _vt_kpis(r[6]),
+            })
+    return {"phases": phases}
+
+
 def _load_phase_meta() -> dict[str, dict]:
     fb = json.loads(_FALLBACK_JSON.read_text(encoding="utf-8"))
     meta = {}
@@ -340,6 +395,7 @@ def _load_excel() -> StrategyResponse:
         {
             "strategy": {"phases": phases},
             "valueTree": _load_value_tree(wb, phase_meta),
+            "valueFramework": _load_value_framework(wb, phase_meta),
             "timeline": timeline,
         }
     )

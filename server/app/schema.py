@@ -120,9 +120,39 @@ class ValueTree(_Base):
     phases: list[VtPhase] = Field(default_factory=list)
 
 
+# ── Value framework ──
+# Sourced from the Excel "Value Framework" sheet. Same phases as the value tree, but the
+# per-phase shape the "Framework" visual needs: the three value dimensions (each with a
+# definition and a "used in this phase?" flag) plus a flat list of opportunities — each with
+# its KPIs and a "shared" flag — independent of the dimension grouping. No enablers here.
+class VfDimension(_Base):
+    name: str
+    definition: str | None = None
+    used: bool = True
+
+
+class VfOpportunity(_Base):
+    title: str
+    shared: bool = False
+    kpis: list[str] = Field(default_factory=list)
+
+
+class VfPhase(_Base):
+    id: str
+    title: str
+    accent: str | None = None
+    dimensions: list[VfDimension] = Field(default_factory=list)
+    opportunities: list[VfOpportunity] = Field(default_factory=list)
+
+
+class ValueFramework(_Base):
+    phases: list[VfPhase] = Field(default_factory=list)
+
+
 class StrategyResponse(_Base):
     """Full payload returned by GET /api/strategy."""
 
     strategy: Strategy
     valueTree: ValueTree = Field(default_factory=ValueTree)
+    valueFramework: ValueFramework = Field(default_factory=ValueFramework)
     timeline: list = Field(default_factory=list)
