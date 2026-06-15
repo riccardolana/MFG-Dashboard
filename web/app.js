@@ -655,17 +655,22 @@ function renderValueTreePage() {
 
 function renderVtPhase(phase) {
   const dims = phase.dimensions || [];
+  // Collapsible per phase (all collapsed by default) so any phase is reachable without
+  // scrolling. --phase-accent cascades to the cards inside, colour-coding them per phase.
   return `
-    <section class="vt-phase" style="--phase-accent:${phase.accent || "var(--muted)"}">
-      <div class="vt-phase__header">
+    <details class="vt-phase" style="--phase-accent:${phase.accent || "var(--muted)"}">
+      <summary class="vt-phase__header">
         <span class="vt-phase__dot"></span>
         <span class="vt-phase__title">${esc(phase.title)}</span>
         <span class="vt-phase__count">${vtPhaseOppCount(phase)} opportunities</span>
+        <svg class="vt-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="vt-phase__body">
+        ${dims.length
+          ? dims.map(renderVtDimension).join("")
+          : `<p class="vt-empty">No value dimensions captured for this phase yet.</p>`}
       </div>
-      ${dims.length
-        ? dims.map(renderVtDimension).join("")
-        : `<p class="vt-empty">No value dimensions captured for this phase yet.</p>`}
-    </section>
+    </details>
   `;
 }
 
