@@ -1440,10 +1440,24 @@ details[open] > summary .panel-section__chevron {
   background: var(--surface-solid);
   cursor: pointer;
 }
-/* status colour states */
-.enabler-status-select.is-notstarted { color: var(--muted); border-color: var(--line); }
-.enabler-status-select.is-inprogress { color: #c08607; border-color: rgba(249,171,0,0.5); background: rgba(249,171,0,0.08); }
-.enabler-status-select.is-completed  { color: #2e8b48; border-color: rgba(52,168,83,0.5); background: rgba(52,168,83,0.08); }
+/* status colour states: In Development → Piloting → Launched, plus On hold */
+.enabler-status-select.is-dev       { color: #1a73e8; border-color: rgba(26,115,232,0.45); background: rgba(26,115,232,0.07); }
+.enabler-status-select.is-piloting  { color: #c08607; border-color: rgba(249,171,0,0.5); background: rgba(249,171,0,0.08); }
+.enabler-status-select.is-launched  { color: #2e8b48; border-color: rgba(52,168,83,0.5); background: rgba(52,168,83,0.08); }
+.enabler-status-select.is-onhold    { color: #b3261e; border-color: rgba(179,38,30,0.45); background: rgba(179,38,30,0.07); }
+/* On-hold reason — only shown when status is On hold */
+.enabler-control.enabler-reason { flex: 1 1 180px; min-width: 160px; }
+.enabler-control.enabler-reason.is-hidden { display: none; }
+.enabler-controls .enabler-reason-input {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-family: inherit;
+  background: var(--surface-solid);
+  color: var(--ink);
+  width: 100%;
+}
 /* shared confirm — hidden until the card is dirty */
 .enabler-confirm { display: none; gap: 4px; }
 .enabler-controls.is-dirty .enabler-confirm { display: inline-flex; }
@@ -1945,6 +1959,251 @@ details[open] > .vt-phase__header .vt-phase__chevron {
   font-size: 12px;
   color: var(--muted);
   line-height: 1.4;
+}
+
+/* ── Value Framework Page (toggle + exclusive phase accordion) ── */
+.vf-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.vf-header__text { flex: 1 1 360px; }
+
+/* segmented Framework / Deep dive toggle */
+.vf-toggle {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.025);
+  flex-shrink: 0;
+}
+.vf-toggle__btn {
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+.vf-toggle__btn:hover { color: var(--ink); }
+.vf-toggle__btn.is-active {
+  background: var(--surface-solid);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+/* phase tab bar — exactly one active, colour-coded per phase */
+.vf-phase-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 22px 0 18px;
+}
+.vf-phase-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  background: var(--surface-solid);
+  transition: all var(--transition-fast);
+}
+.vf-phase-tab__dot {
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: var(--phase-accent, var(--muted));
+  flex-shrink: 0;
+}
+.vf-phase-tab:hover { border-color: color-mix(in srgb, var(--phase-accent) 40%, var(--line)); }
+.vf-phase-tab.is-active {
+  background: color-mix(in srgb, var(--phase-accent) 12%, white);
+  color: color-mix(in srgb, var(--phase-accent) 78%, var(--ink));
+  border-color: color-mix(in srgb, var(--phase-accent) 35%, transparent);
+}
+
+/* Framework visual — one phase card */
+.vf-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-solid);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+.vf-card__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.vf-card__dot {
+  width: 18px; height: 18px;
+  border-radius: 999px;
+  background: var(--phase-accent, var(--muted));
+  flex-shrink: 0;
+}
+.vf-card__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.vf-chipbar {
+  display: flex;
+  gap: 2px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.vf-chip {
+  flex: 1;
+  text-align: center;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--phase-accent, var(--muted));
+}
+.vf-chip.is-unused { background: color-mix(in srgb, var(--phase-accent, var(--muted)) 28%, white); color: rgba(255,255,255,0.95); }
+.vf-defs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+.vf-def {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 90ch;
+}
+.vf-def strong { color: var(--ink); }
+.vf-def.is-unused { color: var(--muted); }
+.vf-opp-list { display: flex; flex-direction: column; gap: 10px; }
+.vf-opp-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
+  align-items: center;
+}
+.vf-opp-box {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-solid);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.vf-opp-link { height: 1px; background: var(--line-strong); }
+.vf-kpi-box {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(0,0,0,0.015);
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.vf-opp-row.is-shared .vf-opp-box,
+.vf-opp-row.is-shared .vf-kpi-box {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--phase-accent, #6750a4) 55%, var(--line));
+}
+
+/* Deep-dive visual — 4 aligned columns; dimension block spans its rows */
+.vt-deepdive { --c-dim: 150px; }
+.vt-dd-heading {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--phase-accent, var(--line));
+}
+.vt-dd-colhead {
+  display: grid;
+  grid-template-columns: var(--c-dim) minmax(0,1.05fr) minmax(0,1.25fr) minmax(0,1.25fr);
+  gap: 14px;
+  padding: 0 2px 8px;
+}
+.vt-dd-colhead span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.vt-dd-group {
+  display: grid;
+  grid-template-columns: var(--c-dim) minmax(0, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.vt-dd-dim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background: var(--phase-accent, var(--muted));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.vt-dd-rows { display: flex; flex-direction: column; gap: 12px; }
+.vt-dd-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1.05fr) minmax(0,1.25fr) minmax(0,1.25fr);
+  gap: 14px;
+  align-items: stretch;
+}
+/* connector line behind the boxes, masked by their solid backgrounds */
+.vt-dd-row::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line-strong);
+  z-index: 0;
+}
+.vt-dd-box {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-solid);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.vt-dd-opp { font-weight: 600; color: var(--ink); }
+.vt-dd-enablers { gap: 4px; }
+.vt-dd-enabler { font-size: 12px; color: var(--ink-soft); }
+.vt-dd-enabler strong { color: var(--ink); font-weight: 700; }
+.vt-dd-kpi { color: var(--muted); font-size: 12px; }
+
+@media (max-width: 820px) {
+  .vt-dd-colhead { display: none; }
+  .vt-dd-group { grid-template-columns: 1fr; }
+  .vt-dd-row { grid-template-columns: 1fr; }
+  .vt-dd-row::before { display: none; }
+  .vf-opp-row { grid-template-columns: 1fr; }
+  .vf-opp-link { display: none; }
 }
 
 /* ── Timeline Page ── */

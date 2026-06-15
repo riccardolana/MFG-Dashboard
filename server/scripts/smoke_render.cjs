@@ -44,6 +44,7 @@ if (mode === "fallback") {
   dataPrelude =
     `var strategyData=${JSON.stringify(d.strategy)};` +
     `var valueTreeData=${JSON.stringify(d.valueTree)};` +
+    `var valueFrameworkData=${JSON.stringify(d.valueFramework)};` +
     `var timelineEnablers=${JSON.stringify(d.timeline)};`;
 }
 
@@ -60,7 +61,15 @@ const exercise = `
       if (s.lanes.jtbd[0]) openModal(s.lanes.jtbd[0].id);
     }
   }
-  setPage("value-tree");
+  setPage("value-tree");  // Value Framework page (framework view, first phase)
+  // exercise both visualizations across every phase tab
+  const vfPhases = (typeof valueFrameworkData !== "undefined" && valueFrameworkData.phases.length)
+    ? valueFrameworkData.phases : valueTreeData.phases;
+  for (const view of ["framework", "tree"]) {
+    state.vfView = view;
+    for (const p of vfPhases) { state.vfPhaseId = p.id; renderValueFrameworkPage(); }
+  }
+  state.vfView = "framework";
   setPage("timeline");
   setPage("overview-all");
   runSearch("brief");

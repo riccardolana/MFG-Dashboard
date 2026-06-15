@@ -82,3 +82,32 @@ def test_loader_builds_value_tree_from_excel():
     # analyze → analyse alias; Execution comes before Effectiveness per the sheet order
     analyse = next(p for p in vt.phases if p.id == "analyse")
     assert [d.name for d in analyse.dimensions] == ["Execution", "Effectiveness"]
+
+
+def test_loader_builds_value_framework_from_excel():
+    os.environ.pop("STRATEGY_XLSX", None)  # use the bundled workbook
+    vf = load_data(refresh=True).valueFramework
+
+    ids = [p.id for p in vf.phases]
+    assert ids == ["discover", "create", "activate", "analyse"]
+
+    discover = next(p for p in vf.phases if p.id == "discover")
+    # Three value dimensions; seven opportunities listed flat for Discover
+    assert [d.name for d in discover.dimensions] == ["Effectiveness", "Execution", "Efficiency"]
+    assert len(discover.opportunities) == 7
+    assert all(d.used for d in discover.dimensions)  # Discover uses every dimension
+
+    # Definitions come through with the "Name:" prefix stripped
+    eff = next(d for d in discover.dimensions if d.name == "Effectiveness")
+    assert eff.definition.startswith("Sharpen strategic hypotheses")
+
+    # "Dimension used in phase? = No" flows through as used=False
+    create = next(p for p in vf.phases if p.id == "create")
+    assert next(d for d in create.dimensions if d.name == "Effectiveness").used is False
+    analyse = next(p for p in vf.phases if p.id == "analyse")
+    assert next(d for d in analyse.dimensions if d.name == "Efficiency").used is False
+
+    # Shared flag + KPI split on "·"
+    dpia = next(o for o in discover.opportunities if o.title == "Dynamic Product Insights Access")
+    assert dpia.shared is True
+    assert dpia.kpis == ["% plans with product context overlaid", "Relevance score Δ"]
