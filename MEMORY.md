@@ -8,6 +8,19 @@ Format: `## YYYY-MM-DD — short title` then a few lines.
 
 ---
 
+## 2026-06-15 — Repo cleanup: removed v3/, relocated the demo
+
+Deleted the confusingly-named `v3/` folder. Its only source file, the demo builder, moved
+to a tracked top-level **`demo/build-demo.cjs`** (it was previously git-ignored inside
+`v3/`, i.e. not in git at all). The generated `demo/strategy-map-demo.html` (the shareable
+single-file build) is git-ignored — rebuild with `node demo/build-demo.cjs`. The legacy
+pre-server standalone (`strategy-planning-map-v3.html`) moved to `archived/`; duplicate
+Excel/logo copies in `v3/assets/` were dropped. `build_excel_mapping.py` now reads the
+canonical `server/app/excel/strategy.xlsx` instead of the `v3/assets` copy.
+
+**Why:** declutter the root and stop maintaining duplicate data; the deploy never used
+`v3/` (Dockerfile copies only `server/` + `web/`), so the live app is unaffected.
+
 ## 2026-06-15 — Value Tree Map is now Excel-driven
 
 The Value Tree page was a placeholder: it derived opportunities from JTBD data and showed
@@ -51,4 +64,4 @@ enabler modal. Edits are **in-memory only** and reset on reload. See
 - **v3** (current) — split into a FastAPI backend (`server/`) serving a static vanilla-JS
   frontend (`web/`) as one Cloud Run service. The Excel workbook was wired as the source of
   truth (loader maps it into the schema), with `fallback.json` retained as the offline
-  fallback. Standalone demo lives at `v3/demo/`.
+  fallback. Standalone shareable demo is built into `demo/` via `demo/build-demo.cjs`.

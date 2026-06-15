@@ -5,6 +5,6 @@
 .claude
 *.pdf
 archived
-v3
+demo
 .DS_Store
 **/.DS_Store
