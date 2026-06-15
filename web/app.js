@@ -84,7 +84,9 @@ const state = {
   activeEnablerId: null,
   searchOpen: false,
   searchQuery: "",
-  sidebarCollapsed: false
+  sidebarCollapsed: false,
+  vfView: "framework",  // "framework" | "tree" — Value Framework page visualization toggle
+  vfPhaseId: null       // active phase in the Value Framework accordion (lazy-init to first)
 };
 
 const el = {
@@ -181,12 +183,12 @@ function render() {
   }
 
   if (state.page === "value-tree") {
-    renderPageBreadcrumbs("Value Tree Map");
+    renderPageBreadcrumbs("Value Framework");
     el.phaseBanner.innerHTML = "";
     el.phaseBanner.style.display = "none";
     el.subphaseTabs.innerHTML = "";
     el.subphaseTabs.style.display = "none";
-    renderValueTreePage();
+    renderValueFrameworkPage();
     return;
   }
 
@@ -261,12 +263,12 @@ function renderPhaseNav() {
     <button class="phase-btn ${isValueTree ? "is-active" : ""}"
             type="button" data-page="value-tree"
             style="--accent:#6750A4"
-            title="Value Tree Map">
+            title="Value Framework">
       <span class="phase-btn__icon" style="--accent:#6750A4">
         ${icon("nav-valuetree")}
       </span>
       <span class="phase-btn__text">
-        <strong>Value Tree Map</strong>
+        <strong>Value Framework</strong>
       </span>
     </button>
   `;
@@ -399,13 +401,15 @@ function renderInsightGrid(items) {
   `).join("")}</div>`;
 }
 
-const ENABLER_STATUSES = ["Not started", "In progress", "Completed"];
+const ENABLER_STATUSES = ["In Development", "Piloting", "Launched", "On hold"];
+const DEFAULT_ENABLER_STATUS = "In Development";
 
 function statusClass(status) {
-  const s = status || "Not started";
-  if (s === "In progress") return "is-inprogress";
-  if (s === "Completed") return "is-completed";
-  return "is-notstarted";
+  const s = status || DEFAULT_ENABLER_STATUS;
+  if (s === "Piloting") return "is-piloting";
+  if (s === "Launched") return "is-launched";
+  if (s === "On hold") return "is-onhold";
+  return "is-dev";
 }
 
 // Status dropdown + expected-completion date on one aligned row, sharing a single
@@ -413,7 +417,8 @@ function statusClass(status) {
 // the timeline card, and the enabler modal. The enabler id lives on .enabler-controls;
 // inner controls stopPropagation so editing never opens the card's modal.
 function renderEnablerControls(enabler) {
-  const status = enabler.status || "Not started";
+  const status = enabler.status || DEFAULT_ENABLER_STATUS;
+  const reason = enabler.statusReason || "";
   const options = ENABLER_STATUSES.map(s =>
     `<option value="${s}"${s === status ? " selected" : ""}>${s}</option>`
   ).join("");
@@ -424,6 +429,10 @@ function renderEnablerControls(enabler) {
         <select class="enabler-status-select ${statusClass(status)}" data-enabler-field="status" data-original="${status}" onclick="event.stopPropagation()">
           ${options}
         </select>
+      </label>
+      <label class="enabler-control enabler-reason${status === "On hold" ? "" : " is-hidden"}">
+        <span>On-hold reason</span>
+        <input type="text" class="enabler-reason-input" data-enabler-field="statusReason" data-original="${esc(reason)}" value="${esc(reason)}" placeholder="Why is this on hold?" onclick="event.stopPropagation()">
       </label>
       <label class="enabler-control">
         <span>Expected completion</span>
@@ -628,97 +637,144 @@ function renderOverviewOpps(opps) {
 }
 
 // ── Value Tree Page ──
-// Driven by the API/fallback `valueTreeData` (Excel "Value Trees" + "Value Framework" sheets):
-// phase -> value dimension (with definition) -> opportunity {shared, enablers, kpis}.
+// ── Value Framework page ──
+// One page, two visualizations toggled by state.vfView, sharing an exclusive phase accordion
+// (a top tab bar selects state.vfPhaseId; exactly one phase is shown):
+//   "framework" — per-phase card from `valueFrameworkData` (Excel "Value Framework" sheet):
+//                 the three value-dimension chips (faded when unused for that phase), their
+//                 definitions, then a flat opportunity → KPI list (dashed when shared).
+//   "tree"      — per-phase deep dive from `valueTreeData` (Excel "Value Trees" sheet):
+//                 dimension blocks → opportunity → enablers (#ID bolded) → KPIs.
 function getValueTree() {
   const vt = (typeof valueTreeData !== "undefined" && valueTreeData) || {};
   return Array.isArray(vt.phases) ? vt.phases : [];
 }
 
-function vtPhaseOppCount(phase) {
-  return (phase.dimensions || []).reduce(
-    (n, d) => n + (d.opportunities ? d.opportunities.length : 0), 0);
+function getValueFramework() {
+  const vf = (typeof valueFrameworkData !== "undefined" && valueFrameworkData) || {};
+  return Array.isArray(vf.phases) ? vf.phases : [];
 }
 
-function renderValueTreePage() {
-  const phases = getValueTree();
+// The phase tab bar drives both views; prefer the framework slice for order/labels, but fall
+// back to the tree's phases if the framework data is missing.
+function vfPhaseList() {
+  const fw = getValueFramework();
+  return fw.length ? fw : getValueTree();
+}
+
+function renderValueFrameworkPage() {
+  const phases = vfPhaseList();
+  if (!phases.length) {
+    el.content.innerHTML = `<div class="vt-header"><h1>Value Framework</h1></div>
+      <p class="vt-empty">No value framework data available.</p>`;
+    return;
+  }
+  if (!state.vfPhaseId || !phases.some(p => p.id === state.vfPhaseId)) {
+    state.vfPhaseId = phases[0].id;
+  }
+  const active = phases.find(p => p.id === state.vfPhaseId);
+  const isTree = state.vfView === "tree";
+
+  const viewToggle = `
+    <div class="vf-toggle" role="tablist" aria-label="Visualization">
+      <button class="vf-toggle__btn ${!isTree ? "is-active" : ""}" type="button" data-vf-view="framework">Framework</button>
+      <button class="vf-toggle__btn ${isTree ? "is-active" : ""}" type="button" data-vf-view="tree">Deep dive</button>
+    </div>`;
+
+  const phaseTabs = phases.map(p => `
+    <button class="vf-phase-tab ${p.id === state.vfPhaseId ? "is-active" : ""}"
+            type="button" data-vf-phase="${p.id}" style="--phase-accent:${p.accent || "var(--muted)"}">
+      <span class="vf-phase-tab__dot"></span>${esc(p.title)}
+    </button>`).join("");
+
+  const body = isTree
+    ? renderVtDeepDivePhase(getValueTree().find(p => p.id === state.vfPhaseId) || active)
+    : renderVfFrameworkPhase(getValueFramework().find(p => p.id === state.vfPhaseId) || active);
+
   el.content.innerHTML = `
-    <div class="vt-header">
-      <h1>Value Tree Map</h1>
-      <p>Each phase mapped through its value dimensions to the opportunities, enablers, and KPIs that create value.</p>
+    <div class="vt-header vf-header">
+      <div class="vf-header__text">
+        <h1>Value Framework</h1>
+        <p>${isTree
+          ? "Each phase mapped through its value dimensions to the opportunities, enablers, and KPIs that create value."
+          : "How each phase creates value: the dimensions in play, the key opportunities, and how success is measured."}</p>
+      </div>
+      ${viewToggle}
     </div>
-    ${phases.length
-      ? phases.map(renderVtPhase).join("")
-      : `<p class="vt-empty">No value tree data available.</p>`}
+    <div class="vf-phase-tabs">${phaseTabs}</div>
+    <div class="vf-panel" style="--phase-accent:${active.accent || "var(--muted)"}">${body}</div>
   `;
 }
 
-function renderVtPhase(phase) {
+// Framework view (screenshot 1): dimension chip bar + definitions + flat opportunity→KPI rows.
+function renderVfFrameworkPhase(phase) {
+  if (!phase) return `<p class="vt-empty">No data for this phase.</p>`;
   const dims = phase.dimensions || [];
-  // Collapsible per phase (all collapsed by default) so any phase is reachable without
-  // scrolling. --phase-accent cascades to the cards inside, colour-coding them per phase.
+  const opps = phase.opportunities || [];
+  const chipbar = `
+    <div class="vf-chipbar">
+      ${dims.map(d => `<span class="vf-chip ${d.used ? "" : "is-unused"}">${esc(d.name)}</span>`).join("")}
+    </div>`;
+  const defs = `
+    <div class="vf-defs">
+      ${dims.map(d => d.definition
+        ? `<p class="vf-def ${d.used ? "" : "is-unused"}"><strong>${esc(d.name)}:</strong> ${esc(d.definition)}</p>`
+        : "").join("")}
+    </div>`;
+  const rows = opps.length
+    ? opps.map(o => `
+        <div class="vf-opp-row ${o.shared ? "is-shared" : ""}">
+          <div class="vf-opp-box">${esc(o.title)}</div>
+          <span class="vf-opp-link"></span>
+          <div class="vf-kpi-box">${(o.kpis || []).map(esc).join(" · ") || "—"}</div>
+        </div>`).join("")
+    : `<p class="vt-empty">No opportunities captured.</p>`;
   return `
-    <details class="vt-phase" style="--phase-accent:${phase.accent || "var(--muted)"}">
-      <summary class="vt-phase__header">
-        <span class="vt-phase__dot"></span>
-        <span class="vt-phase__title">${esc(phase.title)}</span>
-        <span class="vt-phase__count">${vtPhaseOppCount(phase)} opportunities</span>
-        <svg class="vt-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </summary>
-      <div class="vt-phase__body">
-        ${dims.length
-          ? dims.map(renderVtDimension).join("")
-          : `<p class="vt-empty">No value dimensions captured for this phase yet.</p>`}
+    <div class="vf-card">
+      <div class="vf-card__head">
+        <span class="vf-card__dot"></span>
+        <span class="vf-card__title">${esc(phase.title)}</span>
       </div>
-    </details>
-  `;
+      ${chipbar}
+      ${defs}
+      <div class="vf-opp-list">${rows}</div>
+    </div>`;
 }
 
-function renderVtDimension(dim) {
-  const opps = dim.opportunities || [];
-  return `
-    <div class="vt-dimension">
-      <div class="vt-dimension__header">
-        <span class="vt-dimension__name">${esc(dim.name)}</span>
-        ${dim.definition ? `<span class="vt-dimension__def">${esc(dim.definition)}</span>` : ""}
-      </div>
-      <div class="vt-dimension__body">
-        ${opps.length
-          ? opps.map(renderVtOpp).join("")
-          : `<p class="vt-empty">No opportunities captured.</p>`}
-      </div>
-    </div>
-  `;
+// Bold the leading "#NN.NN" reference token in an enabler string, matching the screenshot.
+function fmtEnabler(e) {
+  const s = String(e);
+  const m = s.match(/^(#\S+)\s*(.*)$/);
+  return `<div class="vt-dd-enabler">${m ? `<strong>${esc(m[1])}</strong> ${esc(m[2])}` : esc(s)}</div>`;
 }
 
-function renderVtOpp(opp) {
-  const enablers = opp.enablers || [];
-  const kpis = opp.kpis || [];
+// Deep-dive view (screenshot 3): 4 aligned columns — dimension block (spanning its rows) |
+// opportunity | enablers | KPIs. Column widths are shared between the heading and the rows.
+function renderVtDeepDivePhase(phase) {
+  if (!phase) return `<p class="vt-empty">No data for this phase.</p>`;
+  const dims = phase.dimensions || [];
+  const groups = dims.map(dim => {
+    const opps = dim.opportunities || [];
+    const rows = opps.map(o => `
+      <div class="vt-dd-row">
+        <div class="vt-dd-box vt-dd-opp">${esc(o.title)}</div>
+        <div class="vt-dd-box vt-dd-enablers">${(o.enablers || []).map(fmtEnabler).join("") || "—"}</div>
+        <div class="vt-dd-box vt-dd-kpi">${(o.kpis || []).map(esc).join(" · ") || "—"}</div>
+      </div>`).join("");
+    return `
+      <div class="vt-dd-group">
+        <div class="vt-dd-dim"><span>${esc(dim.name)}</span></div>
+        <div class="vt-dd-rows">${rows}</div>
+      </div>`;
+  }).join("");
   return `
-    <article class="opp-card">
-      <div class="opp-card__head">
-        <span class="opp-badge">Opportunity</span>
-        ${opp.shared ? `<span class="opp-card__shared">Shared</span>` : ""}
+    <div class="vt-deepdive">
+      <div class="vt-dd-heading">Deep dive — ${esc(phase.title)}</div>
+      <div class="vt-dd-colhead">
+        <span>Value dimensions</span><span>Key opportunities</span><span>Enablers</span><span>KPIs</span>
       </div>
-      <h3>${esc(opp.title)}</h3>
-      <div class="opp-block">
-        <span class="opp-pill">Enablers</span>
-        <div class="opp-enablers">
-          ${enablers.length
-            ? enablers.map(e => `<span class="opp-enabler">${esc(e)}</span>`).join("")
-            : `<span class="opp-lever__value">—</span>`}
-        </div>
-      </div>
-      <div class="opp-block">
-        <span class="opp-pill">KPIs</span>
-        <ul class="opp-kpis">
-          ${kpis.length
-            ? kpis.map(k => `<li>${esc(k)}</li>`).join("")
-            : `<li class="opp-lever__value">—</li>`}
-        </ul>
-      </div>
-    </article>
-  `;
+      ${groups || `<p class="vt-empty">No value dimensions captured for this phase yet.</p>`}
+    </div>`;
 }
 
 // ── Timeline Page ──
@@ -1082,8 +1138,11 @@ document.addEventListener("click", e => {
       if (!en) return;
       const sel = wrap.querySelector(".enabler-status-select");
       const dateInput = wrap.querySelector(".enabler-date-input");
+      const reasonInput = wrap.querySelector(".enabler-reason-input");
       if (sel) en.status = sel.value;
       if (dateInput) en.endDate = dateInput.value;
+      // The reason only applies to "On hold"; drop it otherwise so it doesn't linger.
+      en.statusReason = (sel && sel.value === "On hold" && reasonInput) ? reasonInput.value : "";
       if (state.activeEnablerId === en.id) openEnablerModal(en.id);
       else if (state.page === "timeline") renderTimelinePage();
       else renderContent();
@@ -1095,6 +1154,8 @@ document.addEventListener("click", e => {
       wrap.querySelectorAll("[data-original]").forEach(el => { el.value = el.dataset.original; });
       const sel = wrap.querySelector(".enabler-status-select");
       if (sel) sel.className = "enabler-status-select " + statusClass(sel.value);
+      const reasonField = wrap.querySelector(".enabler-reason");
+      if (reasonField && sel) reasonField.classList.toggle("is-hidden", sel.value !== "On hold");
       wrap.classList.remove("is-dirty");
       return;
     }
@@ -1106,6 +1167,20 @@ document.addEventListener("click", e => {
       state.subphaseId = actionBtn.dataset.subphase;
       render();
     }
+    return;
+  }
+
+  const vfViewBtn = e.target.closest("[data-vf-view]");
+  if (vfViewBtn) {
+    state.vfView = vfViewBtn.dataset.vfView;
+    renderValueFrameworkPage();
+    return;
+  }
+
+  const vfPhaseBtn = e.target.closest("[data-vf-phase]");
+  if (vfPhaseBtn) {
+    state.vfPhaseId = vfPhaseBtn.dataset.vfPhase;
+    renderValueFrameworkPage();
     return;
   }
 
@@ -1165,12 +1240,15 @@ el.searchInput.addEventListener("input", e => runSearch(e.target.value));
 // nothing is written until the user confirms. Both `input` and `change` are handled so
 // the <select> and the date <input> are caught reliably across browsers.
 function markEnablerDirty(e) {
-  const ctrl = e.target.closest(".enabler-status-select, .enabler-date-input");
+  const ctrl = e.target.closest(".enabler-status-select, .enabler-date-input, .enabler-reason-input");
   if (!ctrl) return;
   const wrap = ctrl.closest(".enabler-controls");
   if (!wrap) return;
   const sel = wrap.querySelector(".enabler-status-select");
   if (sel) sel.className = "enabler-status-select " + statusClass(sel.value);
+  // Reveal the reason box the moment "On hold" is picked (and hide it otherwise).
+  const reasonField = wrap.querySelector(".enabler-reason");
+  if (reasonField && sel) reasonField.classList.toggle("is-hidden", sel.value !== "On hold");
   const dirty = [...wrap.querySelectorAll("[data-original]")]
     .some(el => el.value !== el.dataset.original);
   wrap.classList.toggle("is-dirty", dirty);

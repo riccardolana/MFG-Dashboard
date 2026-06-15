@@ -22,6 +22,7 @@
     .then(function (data) {
       window.strategyData = data.strategy;
       window.valueTreeData = data.valueTree;
+      window.valueFrameworkData = data.valueFramework;
       window.timelineEnablers = data.timeline;
       return loadScript("app.js");
     })

@@ -2982,6 +2982,251 @@ const valueTreeData = {
   ]
 };
 
+const valueFrameworkData = {
+  "phases": [
+    {
+      "id": "discover",
+      "title": "Discover",
+      "accent": "#4285f4",
+      "dimensions": [
+        {
+          "name": "Effectiveness",
+          "definition": "Sharpen strategic hypotheses and strengthen recommendation quality by proactively surfacing historical learnings against benchmarks.",
+          "used": true
+        },
+        {
+          "name": "Execution",
+          "definition": "Scale institutional knowledge across 1,500+ people and markets, enabling self-serve access without dependency on individual handoffs.",
+          "used": true
+        },
+        {
+          "name": "Efficiency",
+          "definition": "Reduce manual data assembly and accelerate insight generation by unifying fragmented sources into a persistent intelligence layer.",
+          "used": true
+        }
+      ],
+      "opportunities": [
+        {
+          "title": "Automated Historical Learnings Synthesis",
+          "shared": false,
+          "kpis": [
+            "% campaigns with learnings at inception",
+            "Repeat-mistake ↓%"
+          ]
+        },
+        {
+          "title": "Growth Opportunity Surfacing",
+          "shared": false,
+          "kpis": [
+            "Hypotheses/qtr",
+            "Acceptance %",
+            "Performance lift %"
+          ]
+        },
+        {
+          "title": "Dynamic Product Insights Access",
+          "shared": true,
+          "kpis": [
+            "% plans with product context overlaid",
+            "Relevance score Δ"
+          ]
+        },
+        {
+          "title": "Cross-PA Knowledge Sharing at Scale",
+          "shared": false,
+          "kpis": [
+            "Monthly active users",
+            "Self-serve resolution %"
+          ]
+        },
+        {
+          "title": "Connected Research Infrastructure",
+          "shared": false,
+          "kpis": [
+            "Assembly productivity ↑%",
+            "Sources unified into single layer"
+          ]
+        },
+        {
+          "title": "Automated Strategy-to-Production Handoff",
+          "shared": false,
+          "kpis": [
+            "Days strategy→brief",
+            "Manual steps eliminated"
+          ]
+        },
+        {
+          "title": "Live Scenario Planning Capability",
+          "shared": false,
+          "kpis": [
+            "Modelling responsiveness ↑",
+            "Scenarios per cycle ↑"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "create",
+      "title": "Create",
+      "accent": "#ea4335",
+      "dimensions": [
+        {
+          "name": "Effectiveness",
+          "definition": "Improve plan quality and creative accuracy by standardizing formats and reducing specification errors across Product Areas.",
+          "used": false
+        },
+        {
+          "name": "Execution",
+          "definition": "Enable agencies and teams to self-serve on best practices and standards, reducing dependency on repeated manual education.",
+          "used": true
+        },
+        {
+          "name": "Efficiency",
+          "definition": "Eliminate manual re-keying in plan assembly and compress planning timelines through automated data unification and linked documents.",
+          "used": true
+        }
+      ],
+      "opportunities": [
+        {
+          "title": "Standardized Asset Tracker Across Product Areas",
+          "shared": false,
+          "kpis": [
+            "PAs on unified format %",
+            "Spec error rate ↓%"
+          ]
+        },
+        {
+          "title": "Automated Tactical Data Assembly",
+          "shared": false,
+          "kpis": [
+            "Manual re-keys eliminated"
+          ]
+        },
+        {
+          "title": "Linked Scenario Plan and CAP",
+          "shared": false,
+          "kpis": [
+            "Sync productivity ↑%",
+            "Update propagation responsiveness ↑"
+          ]
+        },
+        {
+          "title": "Digital Best Practices Self-Service",
+          "shared": false,
+          "kpis": [
+            "Self-serve resolution %",
+            "Briefing productivity ↑"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activate",
+      "title": "Activate",
+      "accent": "#34a853",
+      "dimensions": [
+        {
+          "name": "Effectiveness",
+          "definition": "Raise QA coverage and improve launch quality through systematic governance, ensuring measurement alignment before builds begin.",
+          "used": true
+        },
+        {
+          "name": "Execution",
+          "definition": "Create a consistent, scalable monitoring standard across PAs by consolidating ~60 dashboards into one unified platform.",
+          "used": true
+        },
+        {
+          "name": "Efficiency",
+          "definition": "Reduce rework and accelerate pre-launch validation by catching defects earlier before they cascade across vendor platforms.",
+          "used": true
+        }
+      ],
+      "opportunities": [
+        {
+          "title": "Campaign Governance as the QA Backbone",
+          "shared": false,
+          "kpis": [
+            "% campaigns through CG",
+            "QA coverage %"
+          ]
+        },
+        {
+          "title": "Measurement & Test Alignment at Setup",
+          "shared": true,
+          "kpis": [
+            "% locked at scenario approval",
+            "Delay days ↓"
+          ]
+        },
+        {
+          "title": "Consolidated Monitoring (~60 to 1)",
+          "shared": false,
+          "kpis": [
+            "Dashboards consolidated",
+            "% reporting via OMS"
+          ]
+        },
+        {
+          "title": "Reducing Rework from Upstream Quality",
+          "shared": false,
+          "kpis": [
+            "Defects caught at trafficking stage %",
+            "Rework ↓"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analyse",
+      "title": "Analyze",
+      "accent": "#f9ab00",
+      "dimensions": [
+        {
+          "name": "Effectiveness",
+          "definition": "Establish trust in central data through visible integrity metrics, making platform-direct pulls the exception rather than the default.",
+          "used": true
+        },
+        {
+          "name": "Execution",
+          "definition": "Improve stakeholder confidence through governance OKRs, escalation paths, and a knowledge layer that makes the right action obvious.",
+          "used": true
+        },
+        {
+          "name": "Efficiency",
+          "definition": "Reduce duplicated oversight effort by consolidating fragmented data integrity dashboards into a single view with clear remediation guidance.",
+          "used": false
+        }
+      ],
+      "opportunities": [
+        {
+          "title": "Accountability Infrastructure for Data Compliance",
+          "shared": false,
+          "kpis": [
+            "% reporting via central platform",
+            "Data trust score %"
+          ]
+        },
+        {
+          "title": "Consolidate Data Visibility",
+          "shared": false,
+          "kpis": [
+            "Dashboards consolidated",
+            "Remediation responsiveness ↑"
+          ]
+        },
+        {
+          "title": "Bypassed Central Infrastructure",
+          "shared": false,
+          "kpis": [
+            "Compliance OKR attainment %",
+            "Stakeholder confidence score"
+          ]
+        }
+      ]
+    }
+  ]
+};
+
 const timelineEnablers = [
   {
     "id": "en-1",
