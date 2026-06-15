@@ -3,8 +3,8 @@
 // this file and drops boot.js), and opening web/index.html without the server.
 //
 // GENERATED from server/app/data/loader.py — the exact payload GET /api/strategy returns
-// (strategy + valueTree + timeline). Do not hand-edit; regenerate after any data change
-// (see CLAUDE.md). boot.js sets these same names on window from the live API.
+// (strategy + valueTree + valueFramework + timeline). Do not hand-edit; regenerate after any
+// data change (see CLAUDE.md). boot.js sets these same names on window from the live API.
 
 const strategyData = {
   "phases": [
@@ -3230,6 +3230,7 @@ const valueFrameworkData = {
 const timelineEnablers = [
   {
     "id": "en-1",
+    "code": "01.01",
     "title": "Strategic Insights",
     "description": "Competitive intelligence, market research, and strategic signals for planning",
     "type": "tool",
@@ -3242,6 +3243,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-2",
+    "code": "01.02",
     "title": "Audience Insights",
     "description": "Audience analysis, sizing, and data for planning and targeting decisions",
     "type": "tool",
@@ -3254,6 +3256,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-3",
+    "code": "01.03",
     "title": "NMI (Nielsen Media Impact)",
     "description": "Cross-platform reach/frequency planning and audience composition analysis (US only)",
     "type": "tool",
@@ -3266,6 +3269,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-4",
+    "code": "01.04",
     "title": "BAV (Brand Asset Valuator)",
     "description": "Brand health and perception tracking",
     "type": "tool",
@@ -3278,6 +3282,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-5",
+    "code": "01.05",
     "title": "GWI",
     "description": "Audience research and consumer insights",
     "type": "tool",
@@ -3290,6 +3295,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-6",
+    "code": "01.06",
     "title": "Pathmatics",
     "description": "Competitive spend and share of voice tracking",
     "type": "tool",
@@ -3302,6 +3308,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-7",
+    "code": "01.07",
     "title": "Charm",
     "description": "Competitive data harmonizer — normalizes competitive data across sources",
     "type": "tool",
@@ -3314,6 +3321,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-8",
+    "code": "01.08",
     "title": "Sightly / Culture Replay",
     "description": "Cultural trend monitoring and social conversation analysis",
     "type": "tool",
@@ -3326,6 +3334,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-9",
+    "code": "01.09",
     "title": "Comscore",
     "description": "Digital audience measurement and media analytics",
     "type": "tool",
@@ -3338,6 +3347,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-10",
+    "code": "01.10",
     "title": "eMarketer",
     "description": "Industry research and market forecasting",
     "type": "tool",
@@ -3350,6 +3360,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-11",
+    "code": "01.11",
     "title": "Forrester",
     "description": "Thought leadership and category research",
     "type": "tool",
@@ -3362,6 +3373,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-12",
+    "code": "01.12",
     "title": "OBP / OBP Lite",
     "description": "Outcomes Based Planning — budget and channel allocation recommendations",
     "type": "tool",
@@ -3374,6 +3386,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-13",
+    "code": "01.13",
     "title": "SEMRush",
     "description": "SEO, competitor search traffic, and keyword opportunity research",
     "type": "tool",
@@ -3386,6 +3399,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-14",
+    "code": "01.14",
     "title": "Google Trends",
     "description": "Search trend data for contextual and competitive analysis",
     "type": "tool",
@@ -3398,6 +3412,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-15",
+    "code": "01.15",
     "title": "Brand Brief Buster",
     "description": "Unpacks and interprets brand briefs",
     "type": "agent",
@@ -3410,6 +3425,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-16",
+    "code": "01.16",
     "title": "Strategy Weaver",
     "description": "Orchestrates specialized sub-agents and weaves outputs into unified strategic reports",
     "type": "agent",
@@ -3422,6 +3438,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-17",
+    "code": "01.17",
     "title": "SLA & Blueprint Navigator",
     "description": "Identifies campaign tiers and pulls relevant service level agreements or operational rules",
     "type": "agent",
@@ -3434,6 +3451,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-18",
+    "code": "01.18",
     "title": "SWOT Analysis",
     "description": "Applies structured SWOT framework to research findings",
     "type": "agent",
@@ -3446,6 +3464,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-19",
+    "code": "01.19",
     "title": "Comms Strategy GPS",
     "description": "Provides strategic reference points and pattern-matching for comms framework development",
     "type": "agent",
@@ -3458,6 +3477,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-20",
+    "code": "01.20",
     "title": "Baby Strategist",
     "description": "Extracts raw product features to generate brief utilizing GET/TO/BY frameworks",
     "type": "agent",
@@ -3470,6 +3490,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-21",
+    "code": "01.21",
     "title": "DR: Unpack the Brief",
     "description": "Uncovers critical, performance-focused variables from dense DR documentation",
     "type": "agent",
@@ -3482,6 +3503,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-22",
+    "code": "01.22",
     "title": "Strat Sprint Showrunner",
     "description": "Ingests disparate marketing metrics and structures them into session agendas",
     "type": "agent",
@@ -3494,6 +3516,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-23",
+    "code": "01.23",
     "title": "Audience Personas",
     "description": "Generates detailed, structured audience personas for any business or market",
     "type": "agent",
@@ -3506,6 +3529,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-24",
+    "code": "01.24",
     "title": "Brief Responder",
     "description": "Parses documents to analyze timelines, spend limits, and auto-generates discussion questions",
     "type": "agent",
@@ -3518,6 +3542,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-25",
+    "code": "01.25",
     "title": "Strategic Signals",
     "description": "Passes real-time social streams through filters to extract actionable trends",
     "type": "agent",
@@ -3530,6 +3555,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-26",
+    "code": "01.26",
     "title": "Behavioral Science",
     "description": "Scripts psychological formulas, habit-stacking models, and behavioral change tactics",
     "type": "agent",
@@ -3542,6 +3568,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-27",
+    "code": "01.27",
     "title": "Brand Analytics",
     "description": "Parses competitor layouts and long-term brand equity vectors over historic timelines",
     "type": "agent",
@@ -3554,6 +3581,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-28",
+    "code": "01.28",
     "title": "Synthetic Focus Groups",
     "description": "Simulates demographic audience responses to creative concepts and messaging",
     "type": "agent",
@@ -3566,6 +3594,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-29",
+    "code": "01.29",
     "title": "How Might We",
     "description": "Generates structured HMW statements from briefs to drive brainstorming",
     "type": "agent",
@@ -3578,6 +3607,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-30",
+    "code": "01.30",
     "title": "Creative Director",
     "description": "Evaluates concept alignments and pushes creative refinement signals",
     "type": "agent",
@@ -3590,6 +3620,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-31",
+    "code": "01.31",
     "title": "Planner",
     "description": "Facilitates early audience strategy definition and market alignments",
     "type": "agent",
@@ -3602,6 +3633,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-32",
+    "code": "01.32",
     "title": "Market Specifics",
     "description": "Extracts regional regulations, localized media trends, and cultural variables",
     "type": "agent",
@@ -3614,6 +3646,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-33",
+    "code": "02.01",
     "title": "Campaign Strategies",
     "description": "Channel-level budget allocation and reach/frequency planning",
     "type": "tool",
@@ -3626,6 +3659,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-34",
+    "code": "02.02",
     "title": "Campaign Tactics",
     "description": "Partner-level budget allocation, audience translation, and tactical planning per publisher",
     "type": "tool",
@@ -3638,6 +3672,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-35",
+    "code": "02.03",
     "title": "Campaign Management (OMS)",
     "description": "Media plan management — where plan of record lives in OMS",
     "type": "tool",
@@ -3650,6 +3685,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-36",
+    "code": "02.04",
     "title": "Campaign Management (Olive / CM 1.0)",
     "description": "PO approval, placement name generation, IO storage, financial tracking. In code freeze.",
     "type": "tool",
@@ -3662,6 +3698,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-37",
+    "code": "02.05",
     "title": "Media Ocean",
     "description": "Offline media line submission and finance system",
     "type": "tool",
@@ -3674,6 +3711,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-38",
+    "code": "02.06",
     "title": "Google Sheets (Media Plan Trix)",
     "description": "Current source of truth for media plan — partner, channel, tactic, budget, flighting",
     "type": "tool",
@@ -3686,6 +3724,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-39",
+    "code": "02.07",
     "title": "Google Sheets (Financial Trix)",
     "description": "Financial tracking, commission and fee summary",
     "type": "tool",
@@ -3698,6 +3737,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-40",
+    "code": "02.08",
     "title": "Google Sheets (Asset Tracker)",
     "description": "Creative specifications, delivery tracking, format requirements per partner",
     "type": "tool",
@@ -3710,6 +3750,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-41",
+    "code": "02.09",
     "title": "Testing Toolkit",
     "description": "Testing template that helps categorize tests, sample size calculators, and QA lists",
     "type": "tool",
@@ -3722,6 +3763,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-42",
+    "code": "02.10",
     "title": "Codex",
     "description": "AI-powered creative testing",
     "type": "tool",
@@ -3734,6 +3776,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-43",
+    "code": "02.11",
     "title": "RFP Process Companion",
     "description": "Guides publisher response windows by providing template structures and step-by-step logic",
     "type": "agent",
@@ -3746,6 +3789,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-44",
+    "code": "02.12",
     "title": "DR: Brief to Activation Packet",
     "description": "Translates programmatic brief items into explicit bidding configurations and structures",
     "type": "agent",
@@ -3758,6 +3802,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-45",
+    "code": "03.01",
     "title": "Campaign Governance",
     "description": "Automated campaign setup QA and best practice verification",
     "type": "tool",
@@ -3770,6 +3815,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-46",
+    "code": "03.02",
     "title": "Production Studio",
     "description": "Asset production and creative asset management",
     "type": "tool",
@@ -3782,6 +3828,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-47",
+    "code": "03.03",
     "title": "Creative Analytics",
     "description": "Asset evaluation — QA creative against platform best practices and performance scoring",
     "type": "tool",
@@ -3794,6 +3841,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-48",
+    "code": "03.04",
     "title": "CM360",
     "description": "Ad server — tag creation, creative trafficking, 3rd party ad serving",
     "type": "tool",
@@ -3806,6 +3854,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-49",
+    "code": "03.05",
     "title": "Wrike",
     "description": "Ticketing system for Ad Ops requests and project management",
     "type": "tool",
@@ -3818,6 +3867,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-50",
+    "code": "03.06",
     "title": "Placement Builder",
     "description": "Placement naming convention generation",
     "type": "tool",
@@ -3830,6 +3880,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-51",
+    "code": "03.07",
     "title": "3PS Form",
     "description": "3PAS (3rd party ad serving) initiation form",
     "type": "tool",
@@ -3842,6 +3893,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-52",
+    "code": "03.08",
     "title": "DV360",
     "description": "Programmatic buying platform",
     "type": "tool",
@@ -3854,6 +3906,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-53",
+    "code": "03.09",
     "title": "Google Ads",
     "description": "Search, YouTube, and Performance Max campaign management",
     "type": "tool",
@@ -3866,6 +3919,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-54",
+    "code": "03.10",
     "title": "Meta Ads Manager",
     "description": "Social campaign management (Meta properties)",
     "type": "tool",
@@ -3878,6 +3932,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-55",
+    "code": "03.11",
     "title": "SEMantha",
     "description": "Yields answers to paid search implementation, troubleshooting, and copy layout rules",
     "type": "agent",
@@ -3890,6 +3945,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-56",
+    "code": "03.12",
     "title": "Victor the Scriptor",
     "description": "Converts natural language commands into API script files for Google Ads/Workspace",
     "type": "agent",
@@ -3902,6 +3958,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-57",
+    "code": "03.13",
     "title": "Prog-Fessor",
     "description": "Synthesizes complex programmatic setup, audience rules, and target inventory configs",
     "type": "agent",
@@ -3914,6 +3971,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-58",
+    "code": "03.14",
     "title": "Eve Aluator",
     "description": "Audits API scripts against standard compliance check-sheets and rigid PII avoidance rules",
     "type": "agent",
@@ -3926,6 +3984,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-59",
+    "code": "03.15",
     "title": "Custom Intent Targeting Expert",
     "description": "Converts target descriptions into downloadable intent keyword groups and URL clouds",
     "type": "agent",
@@ -3938,6 +3997,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-60",
+    "code": "04.01",
     "title": "Buttery Dashboard",
     "description": "Consolidated CAP (test plan) view — tracks test status across campaigns",
     "type": "tool",
@@ -3950,6 +4010,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-61",
+    "code": "04.02",
     "title": "MFG App",
     "description": "Measurement plans, metric QA, campaign lock, VP scorecard data feed, MMM uploads",
     "type": "tool",
@@ -3962,6 +4023,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-62",
+    "code": "04.03",
     "title": "Creative Optimisation",
     "description": "Trafficking and optimisation — creative rotation, social ad building, tracker generation",
     "type": "tool",
@@ -3974,6 +4036,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-63",
+    "code": "04.04",
     "title": "Media Optimisations",
     "description": "Cross platform budget optimisation tool within OMS",
     "type": "tool",
@@ -3986,6 +4049,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-64",
+    "code": "04.05",
     "title": "Campaign Performance",
     "description": "Centralised campaign performance data and media reporting",
     "type": "tool",
@@ -3998,6 +4062,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-65",
+    "code": "04.06",
     "title": "DataLab / EMDP",
     "description": "Data lake — backend data storage, BigQuery access, custom reporting",
     "type": "tool",
@@ -4010,6 +4075,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-66",
+    "code": "04.07",
     "title": "MMM Dashboard",
     "description": "Primary client-facing campaign performance dashboard for weekly reporting",
     "type": "tool",
@@ -4022,6 +4088,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-67",
+    "code": "04.08",
     "title": "Data Integrity Dashboard",
     "description": "Flags missing uploads, mapping errors, and data gaps",
     "type": "tool",
@@ -4034,6 +4101,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-68",
+    "code": "04.09",
     "title": "Digital MM Dashboard",
     "description": "Digital media performance review modules (requires consolidation strategy with 4.07)",
     "type": "tool",
@@ -4046,6 +4114,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-69",
+    "code": "04.10",
     "title": "Misaligned Spend Dashboard",
     "description": "Identifies discrepancies between planned and reported spend",
     "type": "tool",
@@ -4058,6 +4127,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-70",
+    "code": "04.11",
     "title": "MAT (Media Accountability Tool)",
     "description": "Campaign health flags and pacing alerts",
     "type": "tool",
@@ -4070,6 +4140,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-71",
+    "code": "04.12",
     "title": "AIQ Dashboard",
     "description": "Platform best practice adoption scoring",
     "type": "tool",
@@ -4082,6 +4153,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-72",
+    "code": "04.13",
     "title": "CLS Dashboard",
     "description": "Conversion Lift Study results and health monitoring",
     "type": "tool",
@@ -4094,6 +4166,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-73",
+    "code": "04.14",
     "title": "MMT Dashboard",
     "description": "Match Market Test delivery monitoring and study health",
     "type": "tool",
@@ -4106,6 +4179,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-74",
+    "code": "04.15",
     "title": "Incrementality Report",
     "description": "Incremental performance reporting across channels",
     "type": "tool",
@@ -4118,6 +4192,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-75",
+    "code": "04.16",
     "title": "Brand Report",
     "description": "Brand lift study results and brand campaign performance",
     "type": "tool",
@@ -4130,6 +4205,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-76",
+    "code": "04.17",
     "title": "Goldfoil",
     "description": "CLS/BLS results aggregation and reporting",
     "type": "tool",
@@ -4142,6 +4218,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-77",
+    "code": "04.18",
     "title": "BP Scorecard",
     "description": "Best practice adherence scoring per campaign",
     "type": "tool",
@@ -4154,6 +4231,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-78",
+    "code": "04.19",
     "title": "HBR Assistant - Story Finder",
     "description": "Decodes raw campaign metrics into strategic narratives for QBRs",
     "type": "agent",
@@ -4166,6 +4244,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-79",
+    "code": "05.01",
     "title": "Weekly Wrap",
     "description": "Generates weekly campaign commentary and narrative points from dashboard outputs",
     "type": "agent",
@@ -4178,6 +4257,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-80",
+    "code": "05.02",
     "title": "Deep Researcher",
     "description": "Executes multi-source data validation, deep data lookups, and discovery scans",
     "type": "agent",
@@ -4190,6 +4270,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-81",
+    "code": "05.03",
     "title": "Ideas Explorer",
     "description": "Fosters brainstorming sessions using structural lateral thinking exercises",
     "type": "agent",
@@ -4202,6 +4283,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-82",
+    "code": "05.04",
     "title": "Check & Challenge",
     "description": "Emulates highly critical client feedback to stress-test claims inside draft slides",
     "type": "agent",
@@ -4214,6 +4296,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-83",
+    "code": "05.05",
     "title": "Campaign Mgmt (Olive) Helper",
     "description": "Generates immediate technical walkthroughs, form field guides, and troubleshooting answers",
     "type": "agent",
@@ -4226,6 +4309,7 @@ const timelineEnablers = [
   },
   {
     "id": "en-84",
+    "code": "05.06",
     "title": "Analogies",
     "description": "Derives parallel structures from other industries to de-risk adoption of new media strategies",
     "type": "agent",
@@ -4237,3 +4321,4 @@ const timelineEnablers = [
     "endDate": ""
   }
 ];
+

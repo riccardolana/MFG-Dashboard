@@ -709,8 +709,16 @@ function renderValueFrameworkPage() {
 // Framework view (screenshot 1): dimension chip bar + definitions + flat opportunity→KPI rows.
 function renderVfFrameworkPhase(phase) {
   if (!phase) return `<p class="vt-empty">No data for this phase.</p>`;
-  const dims = phase.dimensions || [];
-  const opps = phase.opportunities || [];
+  let dims = phase.dimensions || [];
+  // Resilient to either shape: the framework slice carries a flat `opportunities` list; if we
+  // were handed a value-tree-shaped phase instead (no flat list), flatten its dimensions so the
+  // opportunity cards + KPIs still render.
+  let opps = phase.opportunities;
+  if (!opps) {
+    opps = dims.flatMap(d => (d.opportunities || []).map(o => ({ title: o.title, shared: o.shared, kpis: o.kpis })));
+    dims = dims.map(d => ({ name: d.name, definition: d.definition, used: d.used !== false }));
+  }
+  opps = opps || [];
   const chipbar = `
     <div class="vf-chipbar">
       ${dims.map(d => `<span class="vf-chip ${d.used ? "" : "is-unused"}">${esc(d.name)}</span>`).join("")}
@@ -741,11 +749,37 @@ function renderVfFrameworkPhase(phase) {
     </div>`;
 }
 
+// Resolve an enabler ref like "#02.08 Google Sheets (Asset Tracker)" to a timeline enabler id
+// by matching the name (after the #ref) against the catalog, so deep-dive enablers can open the
+// same detail modal as the rest of the app. Returns null when there's no catalog match.
+function resolveEnablerId(ref) {
+  if (typeof timelineEnablers === "undefined" || !Array.isArray(timelineEnablers)) return null;
+  const s = String(ref);
+  // Primary: match the "#NN.NN" code against the catalog code (unambiguous).
+  const codeMatch = s.match(/^#(\d+(?:[.:]\d+)?)/);
+  if (codeMatch) {
+    const code = codeMatch[1].replace(/:/g, ".");
+    const byCode = timelineEnablers.find(te => (te.code || "") === code);
+    if (byCode) return byCode.id;
+  }
+  // Fallback: match by name (drop the #ref and a trailing "(Agent)"/"(Tool)" qualifier).
+  const name = s.replace(/^#\S+\s*/, "").replace(/\s*\((?:agent|tool)\)\s*$/i, "").trim().toLowerCase();
+  if (!name) return null;
+  const hit = timelineEnablers.find(te => (te.title || "").trim().toLowerCase() === name);
+  return hit ? hit.id : null;
+}
+
 // Bold the leading "#NN.NN" reference token in an enabler string, matching the screenshot.
+// When the ref resolves to a catalog enabler, render it as a clickable control (data-enabler)
+// so the existing delegated handler opens the enabler detail modal.
 function fmtEnabler(e) {
   const s = String(e);
   const m = s.match(/^(#\S+)\s*(.*)$/);
-  return `<div class="vt-dd-enabler">${m ? `<strong>${esc(m[1])}</strong> ${esc(m[2])}` : esc(s)}</div>`;
+  const label = m ? `<strong>${esc(m[1])}</strong> ${esc(m[2])}` : esc(s);
+  const id = resolveEnablerId(s);
+  return id
+    ? `<button type="button" class="vt-dd-enabler is-clickable" data-enabler="${esc(id)}">${label}</button>`
+    : `<div class="vt-dd-enabler">${label}</div>`;
 }
 
 // Deep-dive view (screenshot 3): 4 aligned columns — dimension block (spanning its rows) |

@@ -2196,6 +2196,26 @@ details[open] > .vt-phase__header .vt-phase__chevron {
 .vt-dd-enabler { font-size: 12px; color: var(--ink-soft); }
 .vt-dd-enabler strong { color: var(--ink); font-weight: 700; }
 .vt-dd-kpi { color: var(--muted); font-size: 12px; }
+/* clickable enabler — opens the enabler detail modal, like elsewhere in the app */
+button.vt-dd-enabler.is-clickable {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 2px 0;
+  font: inherit;
+  font-size: 12px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+}
+button.vt-dd-enabler.is-clickable:hover {
+  color: color-mix(in srgb, var(--phase-accent, var(--ink)) 78%, var(--ink));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 @media (max-width: 820px) {
   .vt-dd-colhead { display: none; }
