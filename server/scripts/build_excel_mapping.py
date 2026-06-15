@@ -1,6 +1,6 @@
 """Generate a self-contained HTML coverage map: Excel  <->  v3 UI data contract.
 
-Reads `v3/assets/Data from Miro.xlsx` and `server/app/data/fallback.json` (current v3
+Reads `server/app/excel/strategy.xlsx` and `server/app/data/fallback.json` (current v3
 structure) and emits `excel-mapping.html` at the repo root showing:
   - source summary (sheets, rows)
   - phase/subphase structure: v3 (current) vs Excel (incoming)
@@ -20,7 +20,7 @@ from pathlib import Path
 import openpyxl
 
 ROOT = Path(__file__).resolve().parents[2]
-XLSX = ROOT / "v3" / "assets" / "Data from Miro.xlsx"
+XLSX = ROOT / "server" / "app" / "excel" / "strategy.xlsx"
 FALLBACK = ROOT / "server" / "app" / "data" / "fallback.json"
 OUT = ROOT / "excel-mapping.html"
 

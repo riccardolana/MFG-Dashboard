@@ -30,8 +30,8 @@ Excel workbook ──▶ loader.py ──▶ Pydantic schema ──▶ GET /api/
 - **`web/`** — vanilla-JS frontend.
   - `boot.js` fetches `/api/strategy`, exposes `window.strategyData` / `valueTreeData` / `timelineEnablers`, then loads `app.js`. If the API is unreachable it falls back to the bundled `data-fallback.js`.
   - `app.js` (render + nav), `styles.css`, `index.html`, `icons.js`, `data-fallback.js` (**generated**), `assets/`.
-- **`v3/demo/`** — `strategy-map-demo.html`, a single self-contained file (no server) built from `web/`. `v3/` is **git-ignored** (dev/demo material).
-- **`archived/`** — pre-v3 prototypes (v1 root files + v2). **Ignore it**; not part of the app, git-ignored.
+- **`demo/`** — `build-demo.cjs` (tracked) builds `strategy-map-demo.html`, a single self-contained file (no server) for sharing. The generated `.html` is git-ignored; rebuild it from `web/`.
+- **`archived/`** — pre-v3 prototypes (v1 root files + v2 + the old v3 standalone). **Ignore it**; not part of the app, git-ignored.
 
 ## Commands
 
@@ -46,8 +46,8 @@ cd server && uv run pytest
 node server/scripts/smoke_render.cjs fallback
 cd server && uv run python -c "from app.data.loader import load_data; import json; open('/tmp/excel_data.json','w').write(json.dumps(load_data(refresh=True).model_dump(exclude_none=True)))" && cd .. && node server/scripts/smoke_render.cjs excel
 
-# Rebuild the standalone demo after ANY change under web/
-node v3/demo/build-demo.cjs
+# Rebuild the standalone shareable demo after ANY change under web/
+node demo/build-demo.cjs   # writes demo/strategy-map-demo.html
 
 # Deploy (build context is the repo root; copies server/ + web/)
 gcloud run deploy strategy-map --source . --region europe-west1 --allow-unauthenticated
@@ -68,7 +68,7 @@ Live: https://strategy-map-454573262443.europe-west1.run.app (project `vmlmap-ag
   # web/data-fallback.js (browser fallback + demo source): emits const strategyData/valueTreeData/timelineEnablers
   ```
   (See MEMORY.md / the plan for the full `data-fallback.js` generator snippet.)
-- After any `web/` change, **rebuild the demo** (`node v3/demo/build-demo.cjs`).
+- After any `web/` change, **rebuild the demo** (`node demo/build-demo.cjs`).
 - The **Timeline** is date-gated: the Excel carries no dates, so enablers show on the
   roadmap only after a user sets an expected-completion date in the UI (in-memory, resets on reload).
 - `excel-mapping.html` (repo root, git-ignored) is a generated coverage map — rebuild with

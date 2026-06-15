@@ -13,6 +13,6 @@ __pycache__/
 
 # Legacy (pre-v3) prototypes — moved to archived/, kept out of git.
 /archived/
-# v3 dev/demo material + generated coverage artifact — not part of the deployed app.
-/v3/
+# Generated artifacts — regenerate from source; not part of the deployed app.
+/demo/strategy-map-demo.html
 /excel-mapping.html

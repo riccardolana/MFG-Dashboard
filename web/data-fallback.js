@@ -1,5 +1,5 @@
 // Bundled fallback data for the Strategy Map.
-// Used when GET /api/strategy is unreachable: the standalone v3/demo build (which inlines
+// Used when GET /api/strategy is unreachable: the standalone demo build (which inlines
 // this file and drops boot.js), and opening web/index.html without the server.
 //
 // GENERATED from server/app/data/loader.py — the exact payload GET /api/strategy returns
