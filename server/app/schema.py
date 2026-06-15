@@ -91,9 +91,38 @@ class Strategy(_Base):
     phases: list[Phase] = Field(default_factory=list)
 
 
+# ── Value tree ──
+# Sourced from the Excel "Value Trees" + "Value Framework" sheets: each phase groups its
+# opportunities under a value dimension (Effectiveness / Execution / Efficiency), and each
+# opportunity carries its enablers + KPIs (and a "shared opportunity" flag).
+class VtOpportunity(_Base):
+    id: str | None = None
+    title: str
+    shared: bool = False
+    enablers: list[str] = Field(default_factory=list)
+    kpis: list[str] = Field(default_factory=list)
+
+
+class VtDimension(_Base):
+    name: str
+    definition: str | None = None
+    opportunities: list[VtOpportunity] = Field(default_factory=list)
+
+
+class VtPhase(_Base):
+    id: str
+    title: str
+    accent: str | None = None
+    dimensions: list[VtDimension] = Field(default_factory=list)
+
+
+class ValueTree(_Base):
+    phases: list[VtPhase] = Field(default_factory=list)
+
+
 class StrategyResponse(_Base):
     """Full payload returned by GET /api/strategy."""
 
     strategy: Strategy
-    valueTree: dict = Field(default_factory=dict)
+    valueTree: ValueTree = Field(default_factory=ValueTree)
     timeline: list = Field(default_factory=list)
