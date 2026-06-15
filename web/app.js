@@ -1,14 +1,21 @@
 // ── Lane config + helpers ──
 // Kept here (not in the data file) so the app works when data arrives from the API.
 // `icon` values are Google Material Symbols Rounded names (matching the Figma design).
+const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+// Expected-completion dates are month-granular ("YYYY-MM"); tolerate legacy "YYYY-MM-DD" too.
 function getEnablerMonth(dateStr) {
-  return new Date(dateStr).getMonth() + 1;
+  const m = String(dateStr).match(/^(\d{4})-(\d{2})/);
+  if (m) return parseInt(m[2], 10);
+  const d = new Date(dateStr);
+  return isNaN(d) ? 1 : d.getMonth() + 1;
 }
 
 function formatDate(dateStr) {
+  const m = String(dateStr).match(/^(\d{4})-(\d{2})/);
+  if (m) return `${MONTH_NAMES[parseInt(m[2], 10) - 1]} ${m[1]}`;
   const d = new Date(dateStr);
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  return `${d.getDate()} ${months[d.getMonth()]}`;
+  return isNaN(d) ? "" : `${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 // `icon` keys map to inlined Figma SVGs in window.FIGMA_ICONS (web/icons.js).
@@ -436,7 +443,7 @@ function renderEnablerControls(enabler) {
       </label>
       <label class="enabler-control">
         <span>Expected completion</span>
-        <input type="date" class="enabler-date-input" data-enabler-field="endDate" data-original="${enabler.endDate || ""}" value="${enabler.endDate || ""}" onclick="event.stopPropagation()">
+        <input type="month" class="enabler-date-input" data-enabler-field="endDate" data-original="${(enabler.endDate || "").slice(0, 7)}" value="${(enabler.endDate || "").slice(0, 7)}" onclick="event.stopPropagation()">
       </label>
       <div class="enabler-confirm">
         <button type="button" class="enabler-confirm__ok" data-action="confirm-enabler-edit" title="Confirm">✓</button>
@@ -1122,7 +1129,7 @@ document.addEventListener("click", e => {
       const today = new Date();
       const threeMonths = new Date(today);
       threeMonths.setMonth(threeMonths.getMonth() + 3);
-      const toISO = d => d.toISOString().split("T")[0];
+      const toMonth = d => d.toISOString().slice(0, 7);
       const draftId = "draft-" + Date.now();
       card.classList.remove("enabler-lane-card--unlinked");
       card.classList.add("enabler-lane-card--draft");
@@ -1134,7 +1141,7 @@ document.addEventListener("click", e => {
         </div>
         <div class="enabler-lane-card__title">${esc(actionBtn.dataset.enablerName)}</div>
         <div class="enabler-lane-card__dates">
-          <label><span>Expected completion</span><input type="date" id="${draftId}-end" value="${toISO(threeMonths)}" style="padding:4px 6px;border:1px solid var(--line);border-radius:var(--radius-sm);font-size:12px;font-family:inherit;background:var(--surface-solid);max-width:130px;"></label>
+          <label><span>Expected completion</span><input type="month" id="${draftId}-end" value="${toMonth(threeMonths)}" style="padding:4px 6px;border:1px solid var(--line);border-radius:var(--radius-sm);font-size:12px;font-family:inherit;background:var(--surface-solid);max-width:130px;"></label>
         </div>
         <div style="display:flex;gap:6px;margin-top:6px;">
           <button class="enabler-confirm-btn" type="button" data-action="confirm-enabler" data-draft-id="${draftId}" data-enabler-name="${esc(actionBtn.dataset.enablerName)}" data-enabler-phase="${actionBtn.dataset.enablerPhase}" data-enabler-subphase="${actionBtn.dataset.enablerSubphase}">Confirm</button>
@@ -1155,8 +1162,8 @@ document.addEventListener("click", e => {
         phaseId: actionBtn.dataset.enablerPhase,
         subphaseId: actionBtn.dataset.enablerSubphase,
         type: "tool",
-        startDate: startInput ? startInput.value : new Date().toISOString().split("T")[0],
-        endDate: endInput ? endInput.value : new Date().toISOString().split("T")[0]
+        startDate: startInput ? startInput.value : new Date().toISOString().slice(0, 7),
+        endDate: endInput ? endInput.value : new Date().toISOString().slice(0, 7)
       });
       renderContent();
       return;
