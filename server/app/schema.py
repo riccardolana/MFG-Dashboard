@@ -64,9 +64,10 @@ class Lanes(_Base):
     # richer `{mfgFocus: [...], ...}` object in authored lanes — so they accept either shape.
     jtbd: list[Jtbd] = Field(default_factory=list)
     opportunities: list | dict | None = None
-    enabledBy: list | dict | None = None
     enablers: list | dict | None = None
-    valueCreation: list | dict | None = None
+    # ids (into `timeline`) of this subphase's Near/Future enablers, mapped from the JTBD
+    # sheet's Near/Future tool & agent columns.
+    upcomingEnablers: list | None = None
 
 
 class Subphase(_Base):

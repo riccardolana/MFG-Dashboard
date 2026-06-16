@@ -368,7 +368,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Strategic Insights",
               "Audience Insights",
@@ -403,7 +402,17 @@ const strategyData = {
               "Planner",
               "Market Specifics"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-strategic-direction-marketing-brief-agent-living-brief-agent-that-collects-brief-related-conversations-across-channels-into-a-single-source-of-truth-near",
+              "up-strategic-direction-competitive-analysis-tool-meow-near",
+              "up-strategic-direction-additional-data-source-integrations-next",
+              "up-strategic-direction-social-intelligence-module-oms-next",
+              "up-strategic-direction-burson-integration-next",
+              "up-strategic-direction-g-drive-integration-for-agents-near",
+              "up-strategic-direction-strategy-orchestrator-agent-coordinates-multiple-specialist-agents-near",
+              "up-strategic-direction-choreograph-orchestrator-agent-next",
+              "up-strategic-direction-creative-analytics-library-near"
+            ]
           }
         },
         {
@@ -913,7 +922,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Strategic Insights",
               "Audience Insights",
@@ -948,7 +956,39 @@ const strategyData = {
               "Planner",
               "Market Specifics"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-long-range-planning-audience-delivery-near",
+              "up-long-range-planning-audience-strategy-insight-near",
+              "up-long-range-planning-competitive-analysis-near",
+              "up-long-range-planning-campaign-strategies-non-targeted-reach-kpi-dts-near",
+              "up-long-range-planning-historic-pca-reports-near",
+              "up-long-range-planning-g-drive-knowledge-integration-near",
+              "up-long-range-planning-gemini-meeting-notes-knowledge-base-near",
+              "up-long-range-planning-campaign-tactics-finalize-api-connections-near",
+              "up-long-range-planning-product-insights-next",
+              "up-long-range-planning-social-listening-for-product-usage-next",
+              "up-long-range-planning-campaign-strategies-non-targeted-reach-report-nmi-next",
+              "up-long-range-planning-campaign-performance-historical-data-integration-next",
+              "up-long-range-planning-scenario-building-capability-within-campaign-strategies-next",
+              "up-long-range-planning-hbr-knowledge-agent-near",
+              "up-long-range-planning-pa-level-historical-data-agent-near",
+              "up-long-range-planning-competitive-analysis-agent-charm-meow-strategic-insights-combined-near",
+              "up-long-range-planning-meeting-notes-knowledge-base-agent-near",
+              "up-long-range-planning-agent-to-validate-campaign-tactics-vs-current-state-outputs-near",
+              "up-long-range-planning-oms-campaign-strategy-pilot-non-targeted-reach-report-near",
+              "up-long-range-planning-oms-campaign-strategy-global-rollout-next",
+              "up-long-range-planning-semrush-near",
+              "up-long-range-planning-statcounter-near",
+              "up-long-range-planning-competitive-app-r-i-mfg-next",
+              "up-long-range-planning-competitive-analysis-agent-charm-meow-strategic-insights-combined-into-open-near",
+              "up-long-range-planning-oi-open-intelligence-next",
+              "up-long-range-planning-beacons-for-1pd-matching-next",
+              "up-long-range-planning-oms-beacon-next",
+              "up-long-range-planning-agentic-synthesis-agent-near",
+              "up-long-range-planning-pa-level-historical-knowledge-agent-near",
+              "up-long-range-planning-meeting-transcripts-agent-near",
+              "up-long-range-planning-pa-level-knowledge-base-shared-near"
+            ]
           }
         }
       ],
@@ -1178,7 +1218,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Campaign Strategies",
               "Campaign Tactics",
@@ -1193,7 +1232,16 @@ const strategyData = {
               "RFP Process Companion",
               "DR: Brief to Activation Packet"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-publisher-forecasting-planning-audience-insights-campaign-tactics-near",
+              "up-publisher-forecasting-planning-strategy-tactics-alignment-agent-near",
+              "up-publisher-forecasting-planning-agent-to-justify-scenario-recommendations-near",
+              "up-publisher-forecasting-planning-media-reality-sense-check-aligning-forecast-outputs-with-obp-campaign-strat-near",
+              "up-publisher-forecasting-planning-audience-insights-campaign-strategy-publisher-recommendations-agent-next",
+              "up-publisher-forecasting-planning-feedback-loop-agent-campaign-strategies-campaign-tactics-next",
+              "up-publisher-forecasting-planning-agent-to-identify-best-test-for-campaign-gla-near",
+              "up-publisher-forecasting-planning-agent-to-identify-best-test-for-campaign-gla-pmm-feasibility-next"
+            ]
           }
         },
         {
@@ -1392,7 +1440,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Campaign Strategies",
               "Campaign Tactics",
@@ -1407,7 +1454,19 @@ const strategyData = {
               "RFP Process Companion",
               "DR: Brief to Activation Packet"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-final-media-plan-confirmation-trix-financials-po-near",
+              "up-final-media-plan-confirmation-trix-a-dashboard-that-captures-information-holistically-across-media-plan-inputs-near",
+              "up-final-media-plan-confirmation-trix-campaign-management-2-0-next",
+              "up-final-media-plan-confirmation-trix-auto-build-from-media-plan-logic-next",
+              "up-final-media-plan-confirmation-trix-13-slide-deck-auto-generation-agent-template-based-near",
+              "up-final-media-plan-confirmation-trix-oms-storytelling-agent-campaign-strategies-campaign-tactics-narrative-next",
+              "up-final-media-plan-confirmation-trix-split-financials-near",
+              "up-final-media-plan-confirmation-trix-campaign-management-2-0-mvp-readiness-near",
+              "up-final-media-plan-confirmation-trix-auto-upload-from-media-trix-to-olive-near",
+              "up-final-media-plan-confirmation-trix-campaign-management-2-0-full-readiness-next",
+              "up-final-media-plan-confirmation-trix-plan-line-templates-next"
+            ]
           }
         },
         {
@@ -1506,7 +1565,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Campaign Strategies",
               "Campaign Tactics",
@@ -1521,7 +1579,16 @@ const strategyData = {
               "RFP Process Companion",
               "DR: Brief to Activation Packet"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-creative-management-creative-analytics-creative-library-checks-whether-campaigns-are-fit-for-production-and-also-replaces-google-sheet-assett-tracker-near",
+              "up-creative-management-qa-and-checks-near",
+              "up-creative-management-predictive-performance-scoring-next",
+              "up-creative-management-scaled-creative-library-external-agency-access-next",
+              "up-creative-management-digital-best-practices-agent-for-mfg-and-agencies-near",
+              "up-creative-management-creative-wishlist-pack-slide-stock-near",
+              "up-creative-management-creative-wishlist-agent-pre-populate-slides-integration-w-analytics-library-next",
+              "up-creative-management-full-qa-coverage-agent-next"
+            ]
           }
         }
       ],
@@ -1909,7 +1976,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Campaign Governance",
               "Production Studio",
@@ -1927,7 +1993,32 @@ const strategyData = {
               "Eve Aluator",
               "Custom Intent Targeting Expert"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-campaign-trafficking-launch-monitoring-campaign-shell-building-automation-meta-dv360-near",
+              "up-campaign-trafficking-launch-monitoring-campaign-governance-near",
+              "up-campaign-trafficking-launch-monitoring-creative-analytics-near",
+              "up-campaign-trafficking-launch-monitoring-creative-optimization-near",
+              "up-campaign-trafficking-launch-monitoring-unified-activation-platform-shell-build-governance-next",
+              "up-campaign-trafficking-launch-monitoring-guidance-agent-near",
+              "up-campaign-trafficking-launch-monitoring-cm-2-0-auto-creates-io-sends-to-vendor-next",
+              "up-campaign-trafficking-launch-monitoring-io-generator-agent-auto-populate-from-media-plan-near",
+              "up-campaign-trafficking-launch-monitoring-creative-optimisation-expanded-trackers-for-social-near",
+              "up-campaign-trafficking-launch-monitoring-unified-activation-platform-meta-coverage-near",
+              "up-campaign-trafficking-launch-monitoring-master-builder-google-ads-trafficking-near",
+              "up-campaign-trafficking-launch-monitoring-unified-trafficking-automates-name-generation-t-sheet-tags-next",
+              "up-campaign-trafficking-launch-monitoring-creative-optimisation-expanded-ad-build-association-for-social-near",
+              "up-campaign-trafficking-launch-monitoring-unified-activation-platform-creative-library-analytics-near",
+              "up-campaign-trafficking-launch-monitoring-master-builder-google-ads-near",
+              "up-campaign-trafficking-launch-monitoring-unified-activation-platform-next",
+              "up-campaign-trafficking-launch-monitoring-campaign-governance-expanding-15-50-coverage-near",
+              "up-campaign-trafficking-launch-monitoring-campaign-governance-full-pre-launch-qa-next",
+              "up-campaign-trafficking-launch-monitoring-automate-screenshot-fetching-next",
+              "up-campaign-trafficking-launch-monitoring-pre-launch-qa-support-agent-near",
+              "up-campaign-trafficking-launch-monitoring-campaign-governance-15-near",
+              "up-campaign-trafficking-launch-monitoring-campaign-governance-50-next",
+              "up-campaign-trafficking-launch-monitoring-auto-checker-next",
+              "up-campaign-trafficking-launch-monitoring-auto-fixer-next"
+            ]
           }
         },
         {
@@ -2088,7 +2179,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Campaign Governance",
               "Production Studio",
@@ -2106,7 +2196,13 @@ const strategyData = {
               "Eve Aluator",
               "Custom Intent Targeting Expert"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-tracking-in-flight-optimization-oms-creative-intelligence-in-flight-creative-dashboard-next",
+              "up-tracking-in-flight-optimization-campaign-management-2-0-next",
+              "up-tracking-in-flight-optimization-media-optimizations-next",
+              "up-tracking-in-flight-optimization-media-optimization-recommendations-agent-w-impact-scoring-next",
+              "up-tracking-in-flight-optimization-campaign-performance-next"
+            ]
           }
         }
       ],
@@ -2396,7 +2492,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Buttery Dashboard",
               "MFG App",
@@ -2418,7 +2513,25 @@ const strategyData = {
               "BP Scorecard",
               "HBR Assistant - Story Finder"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-reporting-reconcilation-conversational-analytics-next",
+              "up-reporting-reconcilation-campaign-performance-oms-next",
+              "up-reporting-reconcilation-sanitize-templates-for-commentary-near",
+              "up-reporting-reconcilation-commentary-agent-v2-to-pre-populate-data-from-looker-near",
+              "up-reporting-reconcilation-governance-model-for-data-responsibilities-near",
+              "up-reporting-reconcilation-integrated-single-data-dashboard-near",
+              "up-reporting-reconcilation-datalab-as-backbone-pilot-near",
+              "up-reporting-reconcilation-decision-intelligence-need-to-check-near",
+              "up-reporting-reconcilation-more-api-connectors-tiktok-apple-search-ads-next",
+              "up-reporting-reconcilation-adverity-campaign-performance-migration-next",
+              "up-reporting-reconcilation-campaign-management-2-0-next",
+              "up-reporting-reconcilation-campaign-performance-next",
+              "up-reporting-reconcilation-wtf-agent-knowledge-source-for-data-quality-what-to-do-why-how-to-fix-near",
+              "up-reporting-reconcilation-campaign-management-2-0-screenshot-qa-next",
+              "up-reporting-reconcilation-offline-pod-request-automation-agent-near",
+              "up-reporting-reconcilation-audit-agent-near",
+              "up-reporting-reconcilation-screenshot-qa-agent-next"
+            ]
           }
         },
         {
@@ -2639,7 +2752,6 @@ const strategyData = {
                 }
               ]
             },
-            "enabledBy": [],
             "enablers": [
               "Buttery Dashboard",
               "MFG App",
@@ -2661,7 +2773,15 @@ const strategyData = {
               "BP Scorecard",
               "HBR Assistant - Story Finder"
             ],
-            "valueCreation": []
+            "upcomingEnablers": [
+              "up-end-report-campaign-performance-next",
+              "up-end-report-sanitize-slides-for-testing-wrap-up-near",
+              "up-end-report-agent-to-auto-build-wrap-up-slides-from-data-template-next",
+              "up-end-report-pca-template-draft-producer-agent-near",
+              "up-end-report-client-perspective-agent-near",
+              "up-end-report-pca-process-facilitation-agent-near",
+              "up-end-report-hbr-deck-builder-agent-near"
+            ]
           }
         }
       ],
@@ -4319,6 +4439,2170 @@ const timelineEnablers = [
     "subphaseId": "",
     "startDate": "",
     "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-marketing-brief-agent-living-brief-agent-that-collects-brief-related-conversations-across-channels-into-a-single-source-of-truth-near",
+    "code": "",
+    "title": "Marketing Brief Agent: Living brief agent that collects brief-related conversations across channels into a single source of truth",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-competitive-analysis-tool-meow-near",
+    "code": "",
+    "title": "Competitive Analysis Tool (MEOW)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-additional-data-source-integrations-next",
+    "code": "",
+    "title": "Additional data source integrations",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-social-intelligence-module-oms-next",
+    "code": "",
+    "title": "Social Intelligence module (OMS)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-burson-integration-next",
+    "code": "",
+    "title": "Burson integration",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-g-drive-integration-for-agents-near",
+    "code": "",
+    "title": "G-Drive integration for agents",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-strategy-orchestrator-agent-coordinates-multiple-specialist-agents-near",
+    "code": "",
+    "title": "Strategy Orchestrator agent (coordinates multiple specialist agents)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "1.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-choreograph-orchestrator-agent-next",
+    "code": "",
+    "title": "Choreograph Orchestrator Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "next",
+    "idea": true,
+    "jtbds": [
+      "1.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-strategic-direction-creative-analytics-library-near",
+    "code": "",
+    "title": "Creative Analytics/Library",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "strategic-direction",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-audience-delivery-near",
+    "code": "",
+    "title": "Audience Delivery",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-audience-strategy-insight-near",
+    "code": "",
+    "title": "Audience Strategy Insight",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-competitive-analysis-near",
+    "code": "",
+    "title": "Competitive Analysis",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-campaign-strategies-non-targeted-reach-kpi-dts-near",
+    "code": "",
+    "title": "Campaign Strategies (non-targeted reach KPI - DTS)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-historic-pca-reports-near",
+    "code": "",
+    "title": "Historic PCA Reports",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-g-drive-knowledge-integration-near",
+    "code": "",
+    "title": "G-Drive knowledge integration",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-gemini-meeting-notes-knowledge-base-near",
+    "code": "",
+    "title": "Gemini meeting notes knowledge base",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-campaign-tactics-finalize-api-connections-near",
+    "code": "",
+    "title": "Campaign Tactics finalize API Connections",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-product-insights-next",
+    "code": "",
+    "title": "Product Insights",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-social-listening-for-product-usage-next",
+    "code": "",
+    "title": "Social Listening for Product Usage",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-campaign-strategies-non-targeted-reach-report-nmi-next",
+    "code": "",
+    "title": "Campaign Strategies non-targeted reach report (NMI)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-campaign-performance-historical-data-integration-next",
+    "code": "",
+    "title": "Campaign Performance (historical data integration)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-scenario-building-capability-within-campaign-strategies-next",
+    "code": "",
+    "title": "Scenario building capability within Campaign Strategies",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-hbr-knowledge-agent-near",
+    "code": "",
+    "title": "HBR Knowledge Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-pa-level-historical-data-agent-near",
+    "code": "",
+    "title": "PA-level Historical Data Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-competitive-analysis-agent-charm-meow-strategic-insights-combined-near",
+    "code": "",
+    "title": "Competitive Analysis Agent (Charm + Meow + Strategic Insights combined)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-meeting-notes-knowledge-base-agent-near",
+    "code": "",
+    "title": "Meeting Notes Knowledge Base Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-agent-to-validate-campaign-tactics-vs-current-state-outputs-near",
+    "code": "",
+    "title": "Agent to validate campaign tactics vs. current state outputs",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-oms-campaign-strategy-pilot-non-targeted-reach-report-near",
+    "code": "",
+    "title": "OMS Campaign Strategy (Pilot: non-targeted reach report)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6a"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-oms-campaign-strategy-global-rollout-next",
+    "code": "",
+    "title": "OMS Campaign Strategy (Global Rollout)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6a"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-semrush-near",
+    "code": "",
+    "title": "SEMRush",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6b"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-statcounter-near",
+    "code": "",
+    "title": "Statcounter",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6b"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-competitive-app-r-i-mfg-next",
+    "code": "",
+    "title": "Competitive APP R&I + MFG",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6b"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-competitive-analysis-agent-charm-meow-strategic-insights-combined-into-open-near",
+    "code": "",
+    "title": "Competitive Analysis Agent (Charm + Meow + Strategic Insights combined into Open)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6b"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-oi-open-intelligence-next",
+    "code": "",
+    "title": "OI (Open Intelligence)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6c"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-beacons-for-1pd-matching-next",
+    "code": "",
+    "title": "Beacons for 1PD matching",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6c"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-oms-beacon-next",
+    "code": "",
+    "title": "OMS + Beacon",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "1.6e"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-agentic-synthesis-agent-near",
+    "code": "",
+    "title": "Agentic Synthesis Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6f"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-pa-level-historical-knowledge-agent-near",
+    "code": "",
+    "title": "PA-level Historical Knowledge agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6f"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-meeting-transcripts-agent-near",
+    "code": "",
+    "title": "Meeting Transcripts Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6g"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-long-range-planning-pa-level-knowledge-base-shared-near",
+    "code": "",
+    "title": "PA-level knowledge base (shared)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "discover",
+    "subphaseId": "long-range-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "1.6g"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-audience-insights-campaign-tactics-near",
+    "code": "",
+    "title": "Audience Insights + Campaign Tactics",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-strategy-tactics-alignment-agent-near",
+    "code": "",
+    "title": "Strategy-Tactics Alignment Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-agent-to-justify-scenario-recommendations-near",
+    "code": "",
+    "title": "Agent to justify scenario recommendations",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-media-reality-sense-check-aligning-forecast-outputs-with-obp-campaign-strat-near",
+    "code": "",
+    "title": "Media Reality Sense check (aligning forecast outputs with ObP + Campaign Strat)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-audience-insights-campaign-strategy-publisher-recommendations-agent-next",
+    "code": "",
+    "title": "Audience Insights + Campaign Strategy + Publisher Recommendations Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "2.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-feedback-loop-agent-campaign-strategies-campaign-tactics-next",
+    "code": "",
+    "title": "Feedback loop agent: Campaign Strategies ↔ Campaign Tactics",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "next",
+    "idea": true,
+    "jtbds": [
+      "2.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-agent-to-identify-best-test-for-campaign-gla-near",
+    "code": "",
+    "title": "Agent to identify best test for campaign (GLA)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "2.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-publisher-forecasting-planning-agent-to-identify-best-test-for-campaign-gla-pmm-feasibility-next",
+    "code": "",
+    "title": "Agent to identify best test for campaign (GLA + PMM + feasibility)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "publisher-forecasting-planning",
+    "horizon": "next",
+    "idea": true,
+    "jtbds": [
+      "2.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-financials-po-near",
+    "code": "",
+    "title": "Financials + PO",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-a-dashboard-that-captures-information-holistically-across-media-plan-inputs-near",
+    "code": "",
+    "title": "A dashboard that captures information holistically across Media Plan inputs",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "2.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-campaign-management-2-0-next",
+    "code": "",
+    "title": "Campaign Management 2.0",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "2.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-auto-build-from-media-plan-logic-next",
+    "code": "",
+    "title": "Auto-build from Media Plan logic",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "next",
+    "idea": true,
+    "jtbds": [
+      "2.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-13-slide-deck-auto-generation-agent-template-based-near",
+    "code": "",
+    "title": "13-slide deck auto-generation agent (template-based)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "2.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-oms-storytelling-agent-campaign-strategies-campaign-tactics-narrative-next",
+    "code": "",
+    "title": "OMS Storytelling Agent (Campaign Strategies + Campaign Tactics → narrative)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "2.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-split-financials-near",
+    "code": "",
+    "title": "Split Financials",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-campaign-management-2-0-mvp-readiness-near",
+    "code": "",
+    "title": "Campaign Management 2.0 - MVP Readiness",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "2.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-auto-upload-from-media-trix-to-olive-near",
+    "code": "",
+    "title": "Auto upload from Media Trix to Olive",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "2.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-campaign-management-2-0-full-readiness-next",
+    "code": "",
+    "title": "Campaign Management 2.0 - Full Readiness",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "2.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-final-media-plan-confirmation-trix-plan-line-templates-next",
+    "code": "",
+    "title": "Plan Line templates",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "final-media-plan-confirmation-trix",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "2.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-creative-analytics-creative-library-checks-whether-campaigns-are-fit-for-production-and-also-replaces-google-sheet-assett-tracker-near",
+    "code": "",
+    "title": "Creative Analytics & Creative Library (checks whether campaigns are fit for production and also replaces Google Sheet Assett tracker)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-qa-and-checks-near",
+    "code": "",
+    "title": "QA and Checks",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-predictive-performance-scoring-next",
+    "code": "",
+    "title": "Predictive performance scoring",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-scaled-creative-library-external-agency-access-next",
+    "code": "",
+    "title": "Scaled Creative Library (external agency access)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-digital-best-practices-agent-for-mfg-and-agencies-near",
+    "code": "",
+    "title": "Digital Best Practices agent (for MFG and Agencies)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-creative-wishlist-pack-slide-stock-near",
+    "code": "",
+    "title": "Creative Wishlist Pack - Slide Stock",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-creative-wishlist-agent-pre-populate-slides-integration-w-analytics-library-next",
+    "code": "",
+    "title": "Creative Wishlist Agent (pre-populate slides + integration w. analytics library)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "next",
+    "idea": true,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-creative-management-full-qa-coverage-agent-next",
+    "code": "",
+    "title": "Full QA coverage Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "create",
+    "subphaseId": "creative-management",
+    "horizon": "next",
+    "idea": true,
+    "jtbds": [
+      "2.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-campaign-shell-building-automation-meta-dv360-near",
+    "code": "",
+    "title": "Campaign shell building automation (Meta, DV360)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-campaign-governance-near",
+    "code": "",
+    "title": "Campaign Governance",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.1",
+      "3.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-creative-analytics-near",
+    "code": "",
+    "title": "Creative Analytics",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.1",
+      "3.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-creative-optimization-near",
+    "code": "",
+    "title": "Creative Optimization",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-unified-activation-platform-shell-build-governance-next",
+    "code": "",
+    "title": "Unified Activation Platform (shell build + governance)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-guidance-agent-near",
+    "code": "",
+    "title": "Guidance Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "3.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-cm-2-0-auto-creates-io-sends-to-vendor-next",
+    "code": "",
+    "title": "CM 2.0 (auto-creates IO + sends to vendor)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-io-generator-agent-auto-populate-from-media-plan-near",
+    "code": "",
+    "title": "IO Generator agent (auto-populate from media plan)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-creative-optimisation-expanded-trackers-for-social-near",
+    "code": "",
+    "title": "Creative Optimisation expanded (trackers for social)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-unified-activation-platform-meta-coverage-near",
+    "code": "",
+    "title": "Unified Activation Platform (Meta coverage)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-master-builder-google-ads-trafficking-near",
+    "code": "",
+    "title": "Master Builder (Google Ads Trafficking)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-unified-trafficking-automates-name-generation-t-sheet-tags-next",
+    "code": "",
+    "title": "Unified Trafficking (automates name generation, T-sheet, tags)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.3"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-creative-optimisation-expanded-ad-build-association-for-social-near",
+    "code": "",
+    "title": "Creative Optimisation expanded (ad build + association for social)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-unified-activation-platform-creative-library-analytics-near",
+    "code": "",
+    "title": "Unified Activation platform (Creative Library/Analytics)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-master-builder-google-ads-near",
+    "code": "",
+    "title": "Master Builder (Google Ads)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-unified-activation-platform-next",
+    "code": "",
+    "title": "Unified Activation platform",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-campaign-governance-expanding-15-50-coverage-near",
+    "code": "",
+    "title": "Campaign Governance expanding (15% → 50% coverage)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-campaign-governance-full-pre-launch-qa-next",
+    "code": "",
+    "title": "Campaign Governance full pre-launch QA",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-automate-screenshot-fetching-next",
+    "code": "",
+    "title": "Automate screenshot fetching",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-pre-launch-qa-support-agent-near",
+    "code": "",
+    "title": "Pre-Launch QA Support Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-campaign-governance-15-near",
+    "code": "",
+    "title": "Campaign Governance (15%)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "3.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-campaign-governance-50-next",
+    "code": "",
+    "title": "Campaign Governance (>50%)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-auto-checker-next",
+    "code": "",
+    "title": "Auto-checker",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-campaign-trafficking-launch-monitoring-auto-fixer-next",
+    "code": "",
+    "title": "Auto-fixer",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "campaign-trafficking-launch-monitoring",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-tracking-in-flight-optimization-oms-creative-intelligence-in-flight-creative-dashboard-next",
+    "code": "",
+    "title": "OMS Creative Intelligence / In-flight Creative Dashboard",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "tracking-in-flight-optimization",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-tracking-in-flight-optimization-campaign-management-2-0-next",
+    "code": "",
+    "title": "Campaign Management 2.0",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "tracking-in-flight-optimization",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-tracking-in-flight-optimization-media-optimizations-next",
+    "code": "",
+    "title": "Media Optimizations",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "tracking-in-flight-optimization",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-tracking-in-flight-optimization-media-optimization-recommendations-agent-w-impact-scoring-next",
+    "code": "",
+    "title": "Media Optimization recommendations agent (w. impact scoring)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "tracking-in-flight-optimization",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-tracking-in-flight-optimization-campaign-performance-next",
+    "code": "",
+    "title": "Campaign Performance",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "activate",
+    "subphaseId": "tracking-in-flight-optimization",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "3.8"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-conversational-analytics-next",
+    "code": "",
+    "title": "Conversational analytics",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-campaign-performance-oms-next",
+    "code": "",
+    "title": "Campaign performance (OMS)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-sanitize-templates-for-commentary-near",
+    "code": "",
+    "title": "Sanitize Templates for Commentary",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "4.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-commentary-agent-v2-to-pre-populate-data-from-looker-near",
+    "code": "",
+    "title": "Commentary Agent V2 to pre-populate Data from Looker",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "4.1"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-governance-model-for-data-responsibilities-near",
+    "code": "",
+    "title": "Governance Model for Data Responsibilities",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-integrated-single-data-dashboard-near",
+    "code": "",
+    "title": "Integrated single data dashboard",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-datalab-as-backbone-pilot-near",
+    "code": "",
+    "title": "DataLab as backbone (pilot)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-decision-intelligence-need-to-check-near",
+    "code": "",
+    "title": "Decision intelligence *Need to check",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-more-api-connectors-tiktok-apple-search-ads-next",
+    "code": "",
+    "title": "More API connectors (TikTok, Apple Search Ads)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-adverity-campaign-performance-migration-next",
+    "code": "",
+    "title": "Adverity → Campaign Performance migration",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-campaign-management-2-0-next",
+    "code": "",
+    "title": "Campaign Management 2.0",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-campaign-performance-next",
+    "code": "",
+    "title": "Campaign Performance",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.2",
+      "4.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-wtf-agent-knowledge-source-for-data-quality-what-to-do-why-how-to-fix-near",
+    "code": "",
+    "title": "\"WTF Agent\" (knowledge source for data quality — what to do, why, how to fix)",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.2"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-campaign-management-2-0-screenshot-qa-next",
+    "code": "",
+    "title": "Campaign Management 2.0 (Screenshot QA)",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-offline-pod-request-automation-agent-near",
+    "code": "",
+    "title": "Offline POD Request Automation agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-audit-agent-near",
+    "code": "",
+    "title": "Audit Agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "4.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-reporting-reconcilation-screenshot-qa-agent-next",
+    "code": "",
+    "title": "Screenshot QA agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "reporting-reconcilation",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.4"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-end-report-campaign-performance-next",
+    "code": "",
+    "title": "Campaign Performance",
+    "description": "",
+    "type": "tool",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "end-report",
+    "horizon": "next",
+    "idea": false,
+    "jtbds": [
+      "4.5",
+      "4.6",
+      "4.7"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-end-report-sanitize-slides-for-testing-wrap-up-near",
+    "code": "",
+    "title": "Sanitize Slides for Testing Wrap Up",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "end-report",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "4.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-end-report-agent-to-auto-build-wrap-up-slides-from-data-template-next",
+    "code": "",
+    "title": "Agent to auto-build wrap-up slides from data + template",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "end-report",
+    "horizon": "next",
+    "idea": true,
+    "jtbds": [
+      "4.5"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-end-report-pca-template-draft-producer-agent-near",
+    "code": "",
+    "title": "PCA template draft producer agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "end-report",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-end-report-client-perspective-agent-near",
+    "code": "",
+    "title": "Client perspective agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "end-report",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "4.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-end-report-pca-process-facilitation-agent-near",
+    "code": "",
+    "title": "PCA process facilitation agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "end-report",
+    "horizon": "near",
+    "idea": true,
+    "jtbds": [
+      "4.6"
+    ],
+    "startDate": "",
+    "endDate": ""
+  },
+  {
+    "id": "up-end-report-hbr-deck-builder-agent-near",
+    "code": "",
+    "title": "HBR Deck Builder agent",
+    "description": "",
+    "type": "agent",
+    "owner": "",
+    "span": "",
+    "phaseId": "analyse",
+    "subphaseId": "end-report",
+    "horizon": "near",
+    "idea": false,
+    "jtbds": [
+      "4.7"
+    ],
+    "startDate": "",
+    "endDate": ""
   }
 ];
-
