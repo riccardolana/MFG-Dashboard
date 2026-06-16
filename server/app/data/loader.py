@@ -5,8 +5,11 @@ into the same shape the v3 frontend consumes:
   - strategy : phases -> subphases -> lanes {jtbd, opportunities, enablers}
   - valueTree: phases -> value dimensions -> opportunities {enablers, kpis, shared}
                (from the "Value Trees" + "Value Framework" sheets)
-  - timeline : the 84-item enabler catalog (sheet 2), as the objects the enabler lane
-               matches against (no dates; the dated timeline view was dropped)
+  - timeline : the 84-item enabler catalog (sheet 2, the "now"/existing set) plus the
+               Near/Future tools & agents mapped from the JTBD sheet's Near/Future columns
+               (tagged with `horizon` + `idea`, linked to their subphase via
+               `lanes.upcomingEnablers`). These are the objects the enabler lane and the
+               roadmap render; dates are set in the UI (in-memory).
 
 Phase-level metadata the Excel lacks (subtitle, accent, icon, signal, summary) comes from
 `fallback.json`. If the Excel is missing or fails validation, the whole `fallback.json`
@@ -56,6 +59,30 @@ def _lines(cell) -> list[str]:
         if v and v.lower() not in {"n/a", "n/a.", "na", "-", "tbd"}:
             out.append(v)
     return out
+
+
+_IDEA_RE = re.compile(r"^idea\s*:\s*", re.IGNORECASE)
+
+
+def _upcoming_names(cell) -> list[tuple[str, bool]]:
+    """Parse a Near/Future JTBD enabler cell into [(title, is_idea), ...].
+
+    Reuses `_lines` (drops blanks/N/A), strips a leading 'IDEA:' marker (flagging the entry
+    as a speculative idea), cleans Excel artefacts (`_x000B_`), and collapses whitespace.
+    """
+    out: list[tuple[str, bool]] = []
+    for v in _lines(cell):
+        v = v.replace("_x000B_", " ").replace("\x0b", " ")
+        is_idea = bool(_IDEA_RE.match(v))
+        title = re.sub(r"\s+", " ", _IDEA_RE.sub("", v)).strip()
+        if title:
+            out.append((title, is_idea))
+    return out
+
+
+def _norm_name(s: str) -> str:
+    """Dedup key for an enabler name: lowercase, no 'IDEA:' prefix, collapsed whitespace."""
+    return re.sub(r"\s+", " ", _IDEA_RE.sub("", str(s))).strip().lower()
 
 
 def _parse_opportunities(cell) -> dict:
@@ -330,7 +357,13 @@ def _load_excel() -> StrategyResponse:
     phases: list[dict] = []
     phase_idx: dict[str, dict] = {}
     sub_idx: dict[tuple, dict] = {}
+    # sub_key -> {(horizon, normalized_name): entry}; deduped Near/Future enablers per subphase.
+    upcoming_by_sub: dict[tuple, dict[tuple, dict]] = {}
     cur_phase_name = cur_sub_title = None
+
+    # (column, horizon, type) for the four Near/Future enabler columns of the JTBD sheet.
+    _UPCOMING_COLS = [(11, "near", "tool"), (12, "next", "tool"),
+                      (14, "near", "agent"), (15, "next", "agent")]
 
     for r in rows:
         if r[0]:
@@ -366,11 +399,10 @@ def _load_excel() -> StrategyResponse:
                 "lanes": {
                     "jtbd": [],
                     "opportunities": _parse_opportunities(r[3]) if r[3] else {"mfgFocus": []},
-                    # enabledBy / valueCreation: not in the Excel yet — empty so the lanes
-                    # render (count 0) per the design; wire when columns are added.
-                    "enabledBy": [],
                     "enablers": names_by_phase.get(pid, []),
-                    "valueCreation": [],
+                    # `upcomingEnablers`: ids of this subphase's Near/Future enablers (filled
+                    # after the JTBD loop, materialised from the Near/Future JTBD columns).
+                    "upcomingEnablers": [],
                 },
             }
             sub_idx[sub_key] = sub
@@ -402,6 +434,44 @@ def _load_excel() -> StrategyResponse:
             "effort": extra.get("effort", ""),
             "sections": sections,
         })
+
+        # Collect this JTBD's Near/Future tools & agents for the subphase, deduped by
+        # (horizon, name). Repeats merge: the referencing JTBD numbers accumulate, and an
+        # entry stays an "idea" only while every occurrence carried the IDEA marker.
+        bucket = upcoming_by_sub.setdefault(sub_key, {})
+        for col, horizon, etype in _UPCOMING_COLS:
+            for title, is_idea in _upcoming_names(r[col]):
+                key = (horizon, _norm_name(title))
+                ent = bucket.get(key)
+                if ent is None:
+                    bucket[key] = {"title": title, "type": etype, "horizon": horizon,
+                                   "idea": is_idea, "jtbds": [number] if number else []}
+                else:
+                    ent["idea"] = ent["idea"] and is_idea
+                    if number and number not in ent["jtbds"]:
+                        ent["jtbds"].append(number)
+
+    # Materialise the deduped Near/Future entries as timeline enabler objects (so they reuse
+    # the date/status controls and can be placed on the roadmap), linked back to their subphase.
+    used_ids = {e["id"] for e in timeline}
+    for sub_key, bucket in upcoming_by_sub.items():
+        pid, _ = sub_key
+        sub = sub_idx[sub_key]
+        sub_slug = sub["id"]
+        for ent in bucket.values():
+            base = f"up-{sub_slug}-{_slug(ent['title'])}-{ent['horizon']}"
+            eid, n = base, 2
+            while eid in used_ids:
+                eid, n = f"{base}-{n}", n + 1
+            used_ids.add(eid)
+            timeline.append({
+                "id": eid, "code": "", "title": ent["title"], "description": "",
+                "type": ent["type"], "owner": "", "span": "",
+                "phaseId": pid, "subphaseId": sub_slug,
+                "horizon": ent["horizon"], "idea": ent["idea"], "jtbds": ent["jtbds"],
+                "startDate": "", "endDate": "",
+            })
+            sub["lanes"]["upcomingEnablers"].append(eid)
 
     return StrategyResponse.model_validate(
         {

@@ -32,23 +32,11 @@ const laneMeta = {
     icon: "icon-opportunities",
     description: "Themes from the workshops that can improve quality, speed, alignment, or reuse."
   },
-  enabledBy: {
-    label: "Enabled by",
-    eyebrow: "Dependencies",
-    icon: "icon-enabledby",
-    description: "Rituals, artefacts, teams, and inputs that make the work easier to execute."
-  },
   enablers: {
     label: "Enablers",
     eyebrow: "Tools & agents",
     icon: "icon-enablers",
     description: "Tools and agents that support the work in this phase."
-  },
-  valueCreation: {
-    label: "Value creation",
-    eyebrow: "Why it matters",
-    icon: "icon-valuecreation",
-    description: "The business or operating value created when the subphase works well."
   }
 };
 
@@ -135,11 +123,16 @@ function esc(str) {
 
 function laneCount(sub, key) {
   const data = sub.lanes[key];
-  if (Array.isArray(data)) return data.length;
-  if (data && typeof data === "object" && (data.mfgFocus || data.shared)) {
-    return (data.mfgFocus ? data.mfgFocus.length : 0) + (data.shared ? data.shared.length : 0);
+  let n = 0;
+  if (Array.isArray(data)) n = data.length;
+  else if (data && typeof data === "object" && (data.mfgFocus || data.shared)) {
+    n = (data.mfgFocus ? data.mfgFocus.length : 0) + (data.shared ? data.shared.length : 0);
   }
-  return 0;
+  // The Enablers lane also lists this subphase's Near/Future enablers.
+  if (key === "enablers" && Array.isArray(sub.lanes.upcomingEnablers)) {
+    n += sub.lanes.upcomingEnablers.length;
+  }
+  return n;
 }
 
 function isRichOpportunities(data) {
@@ -453,10 +446,18 @@ function renderEnablerControls(enabler) {
   `;
 }
 
+// "Near"/"Future" + optional "Idea" pills for upcoming enablers (horizon `near`/`next`).
+function horizonPills(en) {
+  if (!en.horizon || en.horizon === "now") return "";
+  const label = en.horizon === "next" ? "Future" : "Near";
+  return `<span class="horizon-pill horizon-${en.horizon}">${label}</span>` +
+    (en.idea ? `<span class="idea-pill">Idea</span>` : "");
+}
+
 function renderEnablerGrid(sub) {
   const names = sub.lanes.enablers;
   const phase = getPhase();
-  return `<div class="enabler-card-grid">${names.map((name, i) => {
+  const nowCards = `<div class="enabler-card-grid">${names.map((name, i) => {
     const matched = timelineEnablers.find(te =>
       te.title.toLowerCase() === name.toLowerCase() && te.subphaseId === sub.id
     ) || timelineEnablers.find(te =>
@@ -489,6 +490,28 @@ function renderEnablerGrid(sub) {
       </div>
     `;
   }).join("")}</div>`;
+
+  // Near/Future enablers for this subphase (mapped from the JTBD Near/Future columns).
+  // Same card style as above, tagged with a horizon pill; setting a date promotes them to
+  // the roadmap. Resolved by id from the shared timelineEnablers list.
+  const upcoming = (sub.lanes.upcomingEnablers || [])
+    .map(id => timelineEnablers.find(te => te.id === id))
+    .filter(Boolean);
+  if (!upcoming.length) return nowCards;
+
+  const upCards = `<div class="enabler-card-grid">${upcoming.map(en => `
+    <div class="enabler-lane-card enabler-lane-card--upcoming" data-enabler="${en.id}">
+      <div class="enabler-lane-card__top">
+        <span class="tl-type-badge type-${en.type}">${esc(en.type)}</span>
+        ${horizonPills(en)}
+      </div>
+      <div class="enabler-lane-card__title">${esc(en.title)}</div>
+      ${en.jtbds && en.jtbds.length ? `<div class="enabler-lane-card__use">Used in JTBD ${esc(en.jtbds.join(", "))}</div>` : ""}
+      ${renderEnablerControls(en)}
+    </div>
+  `).join("")}</div>`;
+
+  return `${nowCards}<div class="enabler-upcoming-head">Near &amp; future</div>${upCards}`;
 }
 
 function renderOpportunitySections(opps) {
@@ -866,6 +889,7 @@ function renderTimelineCard(enabler, months) {
       <div class="tl-card__desc">${esc(enabler.description)}</div>
       <div class="tl-card__meta">
         <span class="tl-type-badge type-${enabler.type}">${esc(enabler.type)}</span>
+        ${horizonPills(enabler)}
       </div>
       ${renderEnablerControls(enabler)}
       <span class="tl-card__anchor" aria-hidden="true"></span>
