@@ -22,7 +22,7 @@ uv run uvicorn app.main:app --reload --port 8000
 
 ## Deploy (Cloud Run)
 ```bash
-gcloud run deploy strategy-map --source . --region europe-west1 --allow-unauthenticated
+./deploy.sh   # own SA, private, IAP sign-in for WPP Google accounts
 ```
 Live: https://strategy-map-454573262443.europe-west1.run.app
 

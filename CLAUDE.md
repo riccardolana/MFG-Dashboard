@@ -50,10 +50,11 @@ cd server && uv run python -c "from app.data.loader import load_data; import jso
 node demo/build-demo.cjs   # writes demo/strategy-map-demo.html
 
 # Deploy (build context is the repo root; copies server/ + web/)
-gcloud run deploy strategy-map --source . --region europe-west1 --allow-unauthenticated
+./deploy.sh   # own SA (zero roles), private, IAP sign-in for WPP accounts
 ```
 
-Live: https://strategy-map-454573262443.europe-west1.run.app (project `vmlmap-agentic-dev`).
+Live: https://strategy-map-454573262443.europe-west1.run.app (project `vmlmap-agentic-dev`) — behind IAP
+since 2026-10-06 (platform team flagged the old public, default-SA, Python 3.12.13 deploy).
 
 ## Data workflow & gotchas
 
@@ -77,7 +78,7 @@ Live: https://strategy-map-454573262443.europe-west1.run.app (project `vmlmap-ag
 
 ## Conventions
 
-- Backend: Python 3.12, FastAPI, Pydantic v2, `uv` for deps/run. Loader never crashes the
+- Backend: Python 3.13, FastAPI, Pydantic v2, `uv` for deps/run. Loader never crashes the
   app — a bad sheet falls back to `fallback.json`.
 - Frontend: vanilla JS, no build step. Template-literal rendering; `esc()` all dynamic text.
   Match the existing comment density and idiom.

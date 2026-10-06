@@ -1,8 +1,12 @@
 # Single Cloud Run container: FastAPI serves the strategy API + the static web/ frontend.
 # Build context MUST be the repo root (MFG/) so both server/ and web/ are available.
 #   docker build -t strategy-map .
-#   gcloud run deploy --source .
-FROM python:3.12-slim
+#   ./deploy.sh   (own SA, IAP — see _brain/references/cloud-run-deploy.md)
+FROM python:3.13-slim
+
+# Patch OS packages at build time so the image does not ship known-CVE libs.
+RUN apt-get update && apt-get upgrade -y --no-install-recommends \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
